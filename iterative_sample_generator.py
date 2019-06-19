@@ -4,20 +4,25 @@ import fire
 import json
 import os
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 import pickle
 
 import model, sample, encoder
 
 def interact_model(
-    experiment_name = "5000_word_prompts"
+    general_path = '../../tail-sampling/',
+    experiment_name = "5000_word_prompts",
+    pre_prepared_prompts = True, 
+    num_prepared_prompts_wanted = 5, #5000
+    pre_prepared_prompts_data_path = general_path+'test_dataframe_200primer.csv',
     model_name='345M',
     seed=27,
-    nsamples=10,
-    batch_size=10,
+    nsamples=num_prepared_prompts_wanted,
+    batch_size=500,
     length=100,
     temperature=1,
-    top_k=0,
+    top_k=1,
     models_dir='../models',    
 ):
     """
@@ -55,6 +60,16 @@ def interact_model(
     elif length > hparams.n_ctx:
         raise ValueError("Can't get samples longer than window size: %s" % hparams.n_ctx)
 
+
+    #getting the random prompts that we want to use
+    if pre_prepared_prompts==True: 
+        np.random.seed(seed)
+        df=pd.read_csv(pre_prepared_prompts_data_path)
+        rand_selections = np.random.randint(0,df.shape[0], size=num_prepared_prompts_wanted)       
+
+    #saving all of the logits from the different batches taken in:
+    all_logits = []
+
     with tf.Session(graph=tf.Graph()) as sess:
         context = tf.placeholder(tf.int32, [batch_size, None])
         np.random.seed(seed)
@@ -70,33 +85,45 @@ def interact_model(
         ckpt = tf.train.latest_checkpoint(os.path.join(models_dir, model_name))
         saver.restore(sess, ckpt)
 
-        while True:
-            raw_text = input("Model prompt >>> ")
-            while not raw_text:
-                print('Prompt should not be empty!')
+        for ind in range(num_prepared_prompts_wanted): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
+            if pre_prepared_prompts==True:
+                #generated further up ahead. 
+                raw_text = df.loc[rand_selections[ind], 'Prompt']
+                print('raw text prompt', raw_text)
+            else: 
                 raw_text = input("Model prompt >>> ")
+                while not raw_text:
+                    print('Prompt should not be empty!')
+                    raw_text = input("Model prompt >>> ")
             context_tokens = enc.encode(raw_text)
             generated = 0
             for _ in range(nsamples // batch_size):
                 out = sess.run(output, feed_dict={
                     context: [context_tokens for _ in range(batch_size)]
                 })
-                all_logits = out[1]
+                batch_logits = out[1]
 
                 out = out[0] # the original output which is the generated sequence
                 out = out[:, len(context_tokens):]
                 
-                #print(all_logits)
-                #print(tf.shape(all_logits))
+                print(tf.shape(batch_logits))
+                #adding to the list of all logits. 
+                all_logits.append(batch_logits)
 
-                pickle.dump(all_logits, open('../../'+experiment_name+'.pickle', 'wb'))
-
+                print('see what the first out looks like! before decoding', out[0])
+                print('out decoding index 0-50257' enc.decode(np.arange(0,50257)))
+                
                 for i in range(batch_size):
                     generated += 1
                     text = enc.decode(out[i])
                     print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
                     print(text)
             print("=" * 80)
+
+        #saving all of the logits into a pickle after all the prompts are iterated through:
+        pickle.dump(rand_selections, open(general_path+'gpt-2_output'+'prompt_rand_selections_'+experiment_name+'.pickle', 'wb'))
+        pickle.dump(all_logits, open(general_path+'gpt-2_output'+'all_logits'+experiment_name+'.pickle', 'wb'))
+
 
 if __name__ == '__main__':
     fire.Fire(interact_model)
