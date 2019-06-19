@@ -10,11 +10,12 @@ import pickle
 import model, sample, encoder
 
 def interact_model(
+    experiment_name = "5000_word_prompts"
     model_name='345M',
-    seed=None,
-    nsamples=2,
-    batch_size=2,
-    length=50,
+    seed=27,
+    nsamples=10,
+    batch_size=10,
+    length=100,
     temperature=1,
     top_k=0,
     models_dir='../models',    
@@ -85,10 +86,10 @@ def interact_model(
                 out = out[0] # the original output which is the generated sequence
                 out = out[:, len(context_tokens):]
                 
-                print(all_logits)
-                print(tf.shape(all_logits))
+                #print(all_logits)
+                #print(tf.shape(all_logits))
 
-                pickle.dump(all_logits, open('../../all_logits.pickle', 'wb'))
+                pickle.dump(all_logits, open('../../'+experiment_name+'.pickle', 'wb'))
 
                 for i in range(batch_size):
                     generated += 1
