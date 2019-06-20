@@ -34,6 +34,9 @@ import model, sample, encoder
 def interact_model( # some other variables are initialized below
     general_path = '../../tail-sampling/',
     experiment_name = "5000_word_prompts",
+    alpha=0.05,
+    nuc_prob=0.25,
+    sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
     num_prepared_prompts_wanted = 5, #5000
     model_name='345M',
@@ -47,7 +50,7 @@ def interact_model( # some other variables are initialized below
     
     # initializing some other variables ==========
     nsamples=batch_size # should equal the batch size. 
-    pre_prepared_prompts_data_path = general_path+'test_dataframe_200primer.csv'
+    pre_prepared_prompts_data_path = general_path+'test_dataframe_300primer.csv'
 
     start = np.arange(0,num_prepared_prompts_wanted,batch_size)
     end = start + batch_size
@@ -87,8 +90,9 @@ def interact_model( # some other variables are initialized below
             hparams=hparams, length=length,
             context=context,
             batch_size=batch_size,
-            temperature=temperature, top_k=top_k
-    )
+            temperature=temperature, sampler='tfs', 
+            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob
+    ) # 'n' is nucleus, 'k' is topk, 'tfs', is tail free sampling
 
         saver = tf.train.Saver()
         ckpt = tf.train.latest_checkpoint(os.path.join(models_dir, model_name))
