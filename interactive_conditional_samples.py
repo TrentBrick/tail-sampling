@@ -32,20 +32,20 @@ import model, sample, encoder
 
 
 def interact_model( # some other variables are initialized below
-    general_path = '../../tail-sampling/',
+    general_path = '',
     experiment_name = "5000_word_prompts",
     alpha=0.05,
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 5, #5000
+    num_prepared_prompts_wanted = 500, #5000
     model_name='345M',
     seed=27,
-    batch_size=5, # 500
-    length=100,
+    batch_size=100, # 500
+    length=150,
     temperature=1,
-    top_k=1,
-    models_dir='../models',    
+    top_k=0,
+    models_dir='../gpt-2/models',    
 ):
     
     # initializing some other variables ==========
