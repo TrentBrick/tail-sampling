@@ -101,6 +101,8 @@ def interact_model( # some other variables are initialized below
         # CHANGE THIS TO BE IN RANGE NUM_PREPARED PROMPTS AND IT WILL GIVE REPEAT SAMPLES OF THE SAME PROMPT!
 
         for s, e in zip(start, end): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
+            print('start of this batch is:', s)
+            
             if pre_prepared_prompts==True:
                 #generated further up ahead. 
                 contexts_batch = []

@@ -2,6 +2,35 @@ import tensorflow as tf
 import numpy as np
 import model
 
+'''
+Instructions for updating:
+Use tf.random.categorical instead.
+Traceback (most recent call last):
+  File "interactive_conditional_samples.py", line 161, in <module>
+    fire.Fire(interact_model)
+  File "/home/bobsnazzle/.local/lib/python3.5/site-packages/fire/core.py", line 127, in Fire
+    component_trace = _Fire(component, args, context, name)
+  File "/home/bobsnazzle/.local/lib/python3.5/site-packages/fire/core.py", line 366, in _Fire
+    component, remaining_args)
+  File "/home/bobsnazzle/.local/lib/python3.5/site-packages/fire/core.py", line 542, in _CallCallable
+    result = fn(*varargs, **kwargs)
+  File "interactive_conditional_samples.py", line 94, in interact_model
+    top_k=top_k, alpha=alpha, nuc_prob=nuc_prob
+  File "/home/bobsnazzle/tail-sampling/sample.py", line 173, in sample_sequence
+    back_prop=False,
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3556, in while_loop
+    return_same_structure)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 3087, in BuildLoop
+    pred, body, original_loop_vars, loop_vars, shape_invariants)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 2991, in _BuildLoop
+    _SetShapeInvariants(real_vars, enter_vars, shape_invariants)
+  File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 566, in _SetShapeInvariants
+    (inp.name, inp.get_shape(), shape))
+ValueError: The shape invariant specified for sample_sequence/multinomial/Multinomial:0 is not compatible with the initial shape of the loop variable. It enters the loop with shape (?, 1), but the specified shape invariant is (100, ?).
+
+'''
+
+
 def ema_calc(vals, alpha):
     inv_alpha = 1-alpha
     for i in np.arange(vals.shape[1].value):
