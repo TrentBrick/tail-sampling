@@ -42,7 +42,7 @@ def interact_model( # some other variables are initialized below
     seed=27,
     batch_size=500, # 500
     generated_length=150,
-    prompt_length = 200,
+    prompt_length = 100,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -111,10 +111,11 @@ def interact_model( # some other variables are initialized below
                 for ind in range(s, e):
                     raw_text = df.loc[rand_selections[ind], 'Prompt']
                     #print(' ========= raw text prompt ========== \n', raw_text)
-                    print('========== end of raw text ==========')
+                    #print('========== end of raw text ==========')
                     contexts_batch.append(enc.encode(raw_text))
                 shortest = prompt_length #only want it to be 200 tokens. #len(min(contexts_batch)) # ensuring that the contexts are all the same length
-                print('the shortest length is', shortest)
+                print('the max length all trimmed to is:', shortest)
+                print('the shortest length is',len(min(contexts_batch)))
                 print('the longest is:', len(max(contexts_batch)))
                 contexts_batch = [c[:shortest] for c in contexts_batch]
 
@@ -126,7 +127,6 @@ def interact_model( # some other variables are initialized below
                 context_tokens = enc.encode(raw_text)
                 shortest = len(context_tokens)
             generated = 0
-            print('about to run these through the model', contexts_batch[0])
             for _ in range(nsamples // batch_size): 
                 if pre_prepared_prompts==True: #making it so that I can feed multiple prompts into the batch!
                     out = sess.run(output, feed_dict={
