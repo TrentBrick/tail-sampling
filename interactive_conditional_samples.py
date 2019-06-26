@@ -36,12 +36,12 @@ def interact_model( # some other variables are initialized below
     experiment_name = "100_word_prompts",
     alpha=0.05,
     nuc_prob=0.25,
-    sampler='tfs', #n, k or tfs
+    sampler='k', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 100, #5000
+    num_prepared_prompts_wanted = 5, #5000
     model_name='345M',
     seed=27,
-    batch_size=100, # 500
+    batch_size=5, # 500
     length=150,
     temperature=1,
     top_k=0,
@@ -90,7 +90,7 @@ def interact_model( # some other variables are initialized below
             hparams=hparams, length=length,
             context=context,
             batch_size=batch_size,
-            temperature=temperature, sampler='tfs', 
+            temperature=temperature, sampler=sampler, 
             top_k=top_k, alpha=alpha, nuc_prob=nuc_prob
     ) # 'n' is nucleus, 'k' is topk, 'tfs', is tail free sampling
 
