@@ -33,16 +33,16 @@ import model, sample, encoder
 
 def interact_model( # some other variables are initialized below
     general_path = '',
-    experiment_name = "100_word_prompts",
-    alpha=0.05,
+    alpha=None,
     nuc_prob=0.25,
-    sampler='k', #n, k or tfs
+    sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 5, #5000
+    num_prepared_prompts_wanted = 5000, #5000
     model_name='345M',
     seed=27,
-    batch_size=5, # 500
-    length=150,
+    batch_size=500, # 500
+    generated_length=150,
+    prompt_length = 200,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -50,7 +50,9 @@ def interact_model( # some other variables are initialized below
     
     # initializing some other variables ==========
     nsamples=batch_size # should equal the batch size. 
-    pre_prepared_prompts_data_path = general_path+'test_dataframe_300primer.csv'
+    pre_prepared_prompts_data_path = general_path+'test_dataframe_500primer_only.csv'
+
+    experiment_name = "%s-sampling-type_%s-word-prompts_%s-gen-length_%s-number-of-prompts" %(sampler,prompt_length, generated_length, num_prepared_prompts_wanted)
 
     start = np.arange(0,num_prepared_prompts_wanted,batch_size)
     end = start + batch_size
@@ -66,9 +68,9 @@ def interact_model( # some other variables are initialized below
     with open(os.path.join(models_dir, model_name, 'hparams.json')) as f:
         hparams.override_from_dict(json.load(f))
 
-    if length is None:
-        length = hparams.n_ctx // 2
-    elif length > hparams.n_ctx:
+    if generated_length is None:
+        generated_length = hparams.n_ctx // 2
+    elif generated_length > hparams.n_ctx:
         raise ValueError("Can't get samples longer than window size: %s" % hparams.n_ctx)
 
 
@@ -87,7 +89,7 @@ def interact_model( # some other variables are initialized below
         np.random.seed(seed)
         tf.set_random_seed(seed)
         output = sample.sample_sequence(
-            hparams=hparams, length=length,
+            hparams=hparams, length=generated_length,
             context=context,
             batch_size=batch_size,
             temperature=temperature, sampler=sampler, 
@@ -101,17 +103,17 @@ def interact_model( # some other variables are initialized below
         # CHANGE THIS TO BE IN RANGE NUM_PREPARED PROMPTS AND IT WILL GIVE REPEAT SAMPLES OF THE SAME PROMPT!
 
         for s, e in zip(start, end): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
-            print('start of this batch is:', s)
+            print('==================  start of this batch is:', s)
             print('we are at start index:', s, 'and end:', e)
             if pre_prepared_prompts==True:
                 #generated further up ahead. 
                 contexts_batch = []
                 for ind in range(s, e):
                     raw_text = df.loc[rand_selections[ind], 'Prompt']
-                    print(' ========= raw text prompt ========== \n', raw_text)
+                    #print(' ========= raw text prompt ========== \n', raw_text)
                     print('========== end of raw text ==========')
                     contexts_batch.append(enc.encode(raw_text))
-                shortest = 250 #only want it to be 200 tokens. #len(min(contexts_batch)) # ensuring that the contexts are all the same length
+                shortest = prompt_length #only want it to be 200 tokens. #len(min(contexts_batch)) # ensuring that the contexts are all the same length
                 print('the shortest length is', shortest)
                 print('the longest is:', len(max(contexts_batch)))
                 contexts_batch = [c[:shortest] for c in contexts_batch]
@@ -124,6 +126,7 @@ def interact_model( # some other variables are initialized below
                 context_tokens = enc.encode(raw_text)
                 shortest = len(context_tokens)
             generated = 0
+            print('about to run these through the model', contexts_batch[0])
             for _ in range(nsamples // batch_size): 
                 if pre_prepared_prompts==True: #making it so that I can feed multiple prompts into the batch!
                     out = sess.run(output, feed_dict={
