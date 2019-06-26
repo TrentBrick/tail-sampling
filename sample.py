@@ -26,10 +26,9 @@ Traceback (most recent call last):
     _SetShapeInvariants(real_vars, enter_vars, shape_invariants)
   File "/usr/local/lib/python3.5/dist-packages/tensorflow/python/ops/control_flow_ops.py", line 566, in _SetShapeInvariants
     (inp.name, inp.get_shape(), shape))
-ValueError: The shape invariant specified for sample_sequence/multinomial/Multinomial:0 is not compatible with the initial shape of the loop variable. It enters the loop with shape (?, 1), but the specified shape invariant is (100, ?).
-
+ValueError: The shape invariant specified for sample_sequence/multinomial/Multinomial:0 is not compatible with the initial shape of the loop variable. 
+It enters the loop with shape (?, 1), but the specified shape invariant is (100, ?).
 '''
-
 
 def ema_calc(vals, alpha):
     inv_alpha = 1-alpha
@@ -168,6 +167,7 @@ sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25):
                 logits = top_k_logits(logits, k=top_k)
             
             samples = tf.multinomial(logits, num_samples=1, output_dtype=tf.int32)
+            print('the samples shape is: ', samples.shape)
             return [
                 next_outputs['presents'] if past is None else tf.concat([past, next_outputs['presents']], axis=-2),
                 samples,

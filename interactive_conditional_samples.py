@@ -33,12 +33,12 @@ import model, sample, encoder
 
 def interact_model( # some other variables are initialized below
     general_path = '',
-    experiment_name = "5000_word_prompts",
+    experiment_name = "100_word_prompts",
     alpha=0.05,
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 500, #5000
+    num_prepared_prompts_wanted = 100, #5000
     model_name='345M',
     seed=27,
     batch_size=100, # 500
@@ -102,7 +102,7 @@ def interact_model( # some other variables are initialized below
 
         for s, e in zip(start, end): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
             print('start of this batch is:', s)
-            
+            print('we are at start index:', s, 'and end:', e)
             if pre_prepared_prompts==True:
                 #generated further up ahead. 
                 contexts_batch = []
