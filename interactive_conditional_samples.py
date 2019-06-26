@@ -37,12 +37,12 @@ def interact_model( # some other variables are initialized below
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 5000, #5000
+    num_prepared_prompts_wanted = 50, #5000
     model_name='345M',
     seed=27,
-    batch_size=500, # 500
+    batch_size=25, # 500
     generated_length=150,
-    prompt_length = 200,
+    prompt_length = 100,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
