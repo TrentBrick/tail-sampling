@@ -37,12 +37,12 @@ def interact_model( # some other variables are initialized below
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 50, #5000
+    num_prepared_prompts_wanted = 5000, #5000
     model_name='345M',
     seed=27,
-    batch_size=25, # 500
+    batch_size=50, # 500
     generated_length=150,
-    prompt_length = 100,
+    prompt_length = 150,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -159,7 +159,7 @@ def interact_model( # some other variables are initialized below
 
         #saving all of the logits into a pickle after all the prompts are iterated through:
         pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
-        pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits'+experiment_name+'.pickle.gz', 'wb'))
+        pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
 
 
 if __name__ == '__main__':
