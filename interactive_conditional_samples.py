@@ -59,6 +59,8 @@ def interact_model( # some other variables are initialized below
     else: 
         sampling_param=top_k
 
+    print('Using the sampling method:::', sampler, 'With parameter:::', sampling_param)
+
     experiment_name = "%s-sampling-type_%s-sampling-param_%s-word-prompts_%s-gen-length_%s-number-of-prompts" %(sampler,sampling_param,prompt_length, generated_length, num_prepared_prompts_wanted)
 
     start = np.arange(0,num_prepared_prompts_wanted,batch_size)
@@ -150,6 +152,9 @@ def interact_model( # some other variables are initialized below
 
                 batch_logits = out[1]
 
+                # rounding up their values. 
+                batch_logits = tf.cast(batch_logits, tf.float16)
+
                 out = out[0] # the original output which is the generated sequence
                 
                 all_text.append(out) # adding text including what the prompt was.
@@ -168,7 +173,7 @@ def interact_model( # some other variables are initialized below
                 for i in range(batch_size):
                     generated += 1
                     text = enc.decode(out[i])
-                    print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
+                    print("=" * 40 + " GENERATED SAMPLE " + str(generated) + " " + "=" * 40)
                     print(text)
             print("=" * 80)
 
