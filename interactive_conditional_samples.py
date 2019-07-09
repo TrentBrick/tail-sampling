@@ -52,7 +52,14 @@ def interact_model( # some other variables are initialized below
     nsamples=batch_size # should equal the batch size. 
     pre_prepared_prompts_data_path = general_path+'test_dataframe_500primer_only.csv'
 
-    experiment_name = "%s-sampling-type_%s-word-prompts_%s-gen-length_%s-number-of-prompts" %(sampler,prompt_length, generated_length, num_prepared_prompts_wanted)
+    if sampler=='tfs':
+        sampling_param=alpha
+    elif sampler=='n':
+        sampling_param=nuc_prob
+    else: 
+        sampling_param=top_k
+
+    experiment_name = "%s-sampling-type_%s-sampling-param_%s-word-prompts_%s-gen-length_%s-number-of-prompts" %(sampler,sampling_param,prompt_length, generated_length, num_prepared_prompts_wanted)
 
     start = np.arange(0,num_prepared_prompts_wanted,batch_size)
     end = start + batch_size
