@@ -37,12 +37,12 @@ def interact_model( # some other variables are initialized below
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
     pre_prepared_prompts = True, 
-    num_prepared_prompts_wanted = 5000, #5000
+    num_prepared_prompts_wanted = 100, #5000
     model_name='345M',
     seed=27,
-    batch_size=50, # 500
+    batch_size=25, # 500
     generated_length=150,
-    prompt_length = 150,
+    prompt_length = 100,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -83,6 +83,9 @@ def interact_model( # some other variables are initialized below
 
     #saving all of the logits from the different batches taken in:
     all_logits = []
+
+    #saving the actual text that was produced
+    all_text = []
 
     with tf.Session(graph=tf.Graph()) as sess:
         context = tf.placeholder(tf.int32, [batch_size, None])
@@ -141,6 +144,9 @@ def interact_model( # some other variables are initialized below
                 batch_logits = out[1]
 
                 out = out[0] # the original output which is the generated sequence
+                
+                all_text.append(out) # adding text including what the prompt was.
+                
                 out = out[:, shortest:] #gets rid of the prompt from the outputs. 
                 
                 print(tf.shape(batch_logits))
@@ -150,6 +156,8 @@ def interact_model( # some other variables are initialized below
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
                 
+                
+
                 for i in range(batch_size):
                     generated += 1
                     text = enc.decode(out[i])
@@ -160,6 +168,7 @@ def interact_model( # some other variables are initialized below
         #saving all of the logits into a pickle after all the prompts are iterated through:
         pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
         pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
+        pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
 
 
 if __name__ == '__main__':
