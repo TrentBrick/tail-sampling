@@ -36,6 +36,7 @@ def interact_model( # some other variables are initialized below
     alpha=None,
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
+    perc_acc=0.99
     pre_prepared_prompts = True, 
     num_prepared_prompts_wanted = 100, #5000
     model_name='345M',
@@ -43,6 +44,7 @@ def interact_model( # some other variables are initialized below
     batch_size=25, # 500
     generated_length=150,
     prompt_length = 100,
+    softmax_output_size = 50527,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -52,10 +54,24 @@ def interact_model( # some other variables are initialized below
     nsamples=batch_size # should equal the batch size. 
     pre_prepared_prompts_data_path = general_path+'test_dataframe_500primer_only.csv'
 
-    if sampler=='tfs':
+
+    k_window_size =None
+    window_weights = None
+    if sampler=='tfs': #ADD IN OPTION TO NOT USE THE WEIGHTING AND COMPUTE FOR THE WHOLE THING
         sampling_param=alpha
+
+        k_window_size = int(np.log(1-perc_acc)/np.log(1-alpha))
+
+        if k_window_size>softmax_output_size: 
+            k_window_size = softmax_output_size
+    
+        window_weights = (1-alpha)**np.arange(0,k_window_size)
+        window_weights = np.expand_dims(np.expand_dims(window_weights, axis=0), axis=0)
+        print('size of K for EMA', k_window_size)
+
     elif sampler=='n':
         sampling_param=nuc_prob
+        
     else: 
         sampling_param=top_k
 
@@ -105,7 +121,8 @@ def interact_model( # some other variables are initialized below
             context=context,
             batch_size=batch_size,
             temperature=temperature, sampler=sampler, 
-            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob
+            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob,
+            k_window_size = k_window_size, window_weights=window_weights
     ) # 'n' is nucleus, 'k' is topk, 'tfs', is tail free sampling
 
         saver = tf.train.Saver()

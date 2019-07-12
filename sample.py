@@ -16,14 +16,37 @@ def my_tf_round(x, decimals = 0):
     multiplier = tf.constant(10**decimals, dtype=x.dtype)
     return tf.round(x * multiplier) / multiplier
 
-def tail_free(logits, alpha):
+def ema_eff(alpha, vals, k_window_size, window_weights ):
+
+    padding = k_window_size -1
+    # THIS CAN BE DONE IN A BATCH V EFFICIENTLY
+    #out = torch.nn.functional.conv1d(torch.from_numpy(vals).unsqueeze(0).unsqueeze(1).double(),torch.from_numpy(window_weights).unsqueeze(0).unsqueeze(1), padding=p )
+    
+    print('ema eff shape', vals.shape)
+
+
+    padding = k_window_size -1
+
+    tensor_paddings = tf.constant([[0, 0], 
+                            [padding, padding],
+                            [0,0]])
+    print('vals shape pre conv op', vals.shape)
+    vals = tf.pad(vals, tensor_paddings, "CONSTANT")
+    out = tf.cast(tf.nn.conv1d(vals, window_weights, padding='VALID' ), tf.float32) #.astype(tf.float32)
+    print('out shape', out.shape)
+    out = tf.math.multiply(alpha,out[:,padding:,:])
+    print('out shape', out.shape)
+    return out
+
+def tail_free(logits, alpha, k_window_size, window_weights):
     #print('logits passed into the tfs', logits.shape)
     soft = tf.nn.softmax(logits, axis=1)
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
     if alpha is not None:
-        #print('sps passed into the ema', logits.shape)
+        sps = ema_eff(alpha, soft, k_window_size, window_weights)
+        '''#print('sps passed into the ema', logits.shape)
         sps = tf.sort(soft, direction='ASCENDING',axis=1)
-        sps = ema_calc(sps, alpha)
+        sps = ema_calc(sps, alpha)'''
     else: 
         sps = tf.sort(soft, direction='DESCENDING',axis=1) #isnt doing any of the reversing
     sps = my_tf_round(sps, 2) # quantization
@@ -101,7 +124,8 @@ def top_k_logits(logits, k):
 
 
 def sample_sequence(*, hparams, length, start_token=None, batch_size=None, context=None, 
-sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25):
+sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25, 
+k_window_size=None, window_weights=None):
     if start_token is None:
         assert context is not None, 'Specify exactly one of start_token and context!' # this is where the whole context is already given into the model. 
         # it is the primer that I write for it! 
@@ -140,7 +164,7 @@ sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25):
                 logits = nucleus(logits, p=nuc_prob)
             elif sampler=='tfs':
                 print('using tail free sampling')
-                logits = tail_free(logits, alpha=alpha)
+                logits = tail_free(logits, alpha, k_window_size, window_weights)
             else: 
                 print('defauling to top k sampling')
                 logits = top_k_logits(logits, k=top_k)
