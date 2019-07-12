@@ -36,7 +36,7 @@ def interact_model( # some other variables are initialized below
     alpha=None,
     nuc_prob=0.25,
     sampler='tfs', #n, k or tfs
-    perc_acc=0.99
+    perc_acc=0.99,
     pre_prepared_prompts = True, 
     num_prepared_prompts_wanted = 100, #5000
     model_name='345M',
@@ -67,7 +67,7 @@ def interact_model( # some other variables are initialized below
     
         window_weights = (1-alpha)**np.arange(0,k_window_size)
         window_weights = np.expand_dims(np.expand_dims(window_weights, axis=0), axis=0)
-        print('size of K for EMA', k_window_size)
+        print('size of K (window size) for EMA', k_window_size)
 
     elif sampler=='n':
         sampling_param=nuc_prob
