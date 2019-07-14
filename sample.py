@@ -24,17 +24,20 @@ def ema_eff(alpha, vals, k_window_size, window_weights ):
     
     print('ema eff shape', vals.shape)
 
-
     padding = k_window_size -1
 
     tensor_paddings = tf.constant([[0, 0], 
                             [padding, padding],
                             [0,0]])
     print('vals shape pre conv op', vals.shape)
+
+    # need to give the output vals a channel: 
+    vals = tf.expand_dims(vals, axis=2 )
+
     vals = tf.pad(vals, tensor_paddings, "CONSTANT")
-    out = tf.cast(tf.nn.conv1d(vals, window_weights, padding='VALID' ), tf.float32) #.astype(tf.float32)
+    out = tf.cast(tf.nn.conv1d(vals, window_weights, padding='VALID', stride=1 ), tf.float32) #.astype(tf.float32)
     print('out shape', out.shape)
-    out = tf.math.multiply(alpha,out[:,padding:,:])
+    out = tf.math.multiply(alpha,out[:,padding:,0])
     print('out shape', out.shape)
     return out
 

@@ -60,14 +60,19 @@ def interact_model( # some other variables are initialized below
     if sampler=='tfs': #ADD IN OPTION TO NOT USE THE WEIGHTING AND COMPUTE FOR THE WHOLE THING
         sampling_param=alpha
 
-        k_window_size = int(np.log(1-perc_acc)/np.log(1-alpha))
+        if sampling_param != None: 
 
-        if k_window_size>softmax_output_size: 
-            k_window_size = softmax_output_size
-    
-        window_weights = (1-alpha)**np.arange(0,k_window_size)
-        window_weights = np.expand_dims(np.expand_dims(window_weights, axis=0), axis=0)
-        print('size of K (window size) for EMA', k_window_size)
+            k_window_size = int(np.log(1-perc_acc)/np.log(1-alpha))
+
+            if k_window_size>softmax_output_size: 
+                k_window_size = softmax_output_size
+        
+            window_weights = (1-alpha)**np.arange(0,k_window_size) 
+            window_weights = np.expand_dims(np.expand_dims(window_weights, axis=1), axis=2).astype(np.float32)
+            print('size of K (window size) for EMA', k_window_size)
+
+        else:
+            print('Using an alpha of None')
 
     elif sampler=='n':
         sampling_param=nuc_prob
@@ -170,7 +175,7 @@ def interact_model( # some other variables are initialized below
                 batch_logits = out[1]
 
                 # rounding up their values. 
-                batch_logits = tf.cast(batch_logits, tf.float16)
+                #batch_logits = tf.cast(batch_logits, tf.float16)
 
                 out = out[0] # the original output which is the generated sequence
                 
