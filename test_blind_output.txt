@@ -1,4 +1,4 @@
-Prompt 80 order was: 0,  2,  1, 13,  5,  8,  3,  7,  9, 10,  4, 14, 11,  6, 12: 
+Prompt: 
  
 [WP] Trump loses his memory- but not his presidential campaign. 
  ``It worked ''snarled Hillary, her dainty eyes slanting towards the screen, a smile slivering into the fissures of her face. 
@@ -7,12 +7,12 @@ Prompt 80 order was: 0,  2,  1, 13,  5,  8,  3,  7,  9, 10,  4, 14, 11,  6, 12:
  
  Hillary greedily watched as her friends and wall street cohorts cascaded images of ex-che
 ================== 
-Random Generation: 0 - weird
+Random Generation: 0 
  
  Haven. 
 Trump's football-sized, atomic dancing arm connected to a simple bra wiggly back and forth. He belted up the high notes of the crowd magically. His commentator Lovely Victoria Starr giggled remembering her sequence of majestic military drum leads as Old Monkkett beat the anti-Assad drums at war. Hillary blinked, "Ah you saw his mother hawk bread and tumbleweed during that lamination ass botched wedding extract," she spoke a rare Trumpian breathy smile that grew as her tortured crimson eyes sneakily glimpsed her boyfriend struggling to join a fraternity clandestine figure.[WP] The former Southern states Senator landed on Top of the World flag looped out of shape again, causing Hillary to gape in awe of her beloved
 ================== 
-Random Generation: 1 - pretty good
+Random Generation: 1 
  
 fs and bankers on the screen, while her campaign manager, Corey Lewandowski, and campaign director, John Podesta, chatted at the bar. Hillary's face appeared to glaze over as she watched her father, the former president of a major international banking firm, deliver speeches about his future plans for a world of global wealth. 
  "It was a wonderful thing,'' Hillary later recalled. 
@@ -20,7 +20,7 @@ fs and bankers on the screen, while her campaign manager, Corey Lewandowski, and
 "We did that when we were young,'' she said. "Then it got weird, but you've got to deal with it.''
 On that Saturday night in August, 2012, Hillary had been at the Clinton
 ================== 
-Random Generation: 2 -okay
+Random Generation: 2 
  
 ff, Donald Trump. 
  
@@ -35,19 +35,19 @@ ff, Donald Trump.
 
 The video was played again. <|endoftext|>I was a bit surprised to see how quickly
 ================== 
-Random Generation: 3 - really weird. 
+Random Generation: 3 
  
  Haven. 
 Trump's football-sized, plastic wheel remained connected to a simple light controls pyramid behind him. For the instantaneous interval before every pass, some memory of the aforementioned context, of the helpless grip of that California beauty once might perform. 
 Come again? Nocturnal Stasis * If in any way this prelude to the inevitable and inevitable Clintonian failures of the Fall election reached their twenty-first century botched heroes before the cameras, a rare offering of curiosity and honesty that would possibly strike shocked grizzled Clinton experts such as John Brezinski, George Stephanopoulos, Readia Sonntag and often Bernard Goldberg would be inescapably needed. 
 Corporacrats Snide and certain who might have owned Trump's message
 ================== 
-Random Generation: 4 - repeat
+Random Generation: 4 
  
 fs, lawyers, and politicians, and chanted, "Hillary! Hillary! Hillary!" 
  ``It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It worked! It
 ================== 
-Random Generation: 5 - weird
+Random Generation: 5 
  
  Haven. 
 Trump's football-sized, atomic-sized eyes looked bemused. 
@@ -57,7 +57,7 @@ was seen, a rare item of curiosity and status that Hillary didn't question.
 Clinton had picked her boyfriend and hammer and nail for the upcoming Democratic presidential nomination.  
 Mrs Clinton's eyes lit up as the video looped, lighting up again just as it had done months earlier.<|endoftext|>Merkel
 ================== 
-Random Generation: 6 - repeat. 
+Random Generation: 6 
  
 fs, lawyers, and politicians, and then, in a moment of sheer, unbridled, joy, she saw Trump's face. 
  
@@ -78,7 +78,7 @@ fs, lawyers, and politicians, and then, in a moment of sheer, unbridled, joy, sh
  
  Hillary's eyes were wide, her mouth open, her
 ================== 
-Random Generation: 7 - pretty good
+Random Generation: 7 
  
 f and White House intern Anthony Scaramucci.
   
@@ -89,7 +89,7 @@ Trump, seemingly oblivious to the images of himself and his father being photogr
 The photo was taken in 2005, before Priebus was forced out as chief of staff after a series of racist tweets about the press. 
  "The problem is that he was always on TV, and I knew he was on TV,'' Trump said. "He had the most incredible eyes. And I thought he was a great guy. I thought he was a good guy. I was
 ================== 
-Random Generation: 8 - pretty good? 
+Random Generation: 8 
  
 f Sam Kass, a blustery Cheeto aficionado who was, at that moment, always called "a former father." 
  
@@ -103,7 +103,7 @@ The latest generation of mobile phones has dramatically reduced the number of ac
 
 New research shows
 ================== 
-Random Generation: 9 - okay.
+Random Generation: 9 
  
  Haven. 
 Trump's football-sized, atomic genius remained connected to the oxygen chambers of his muscles.
@@ -111,7 +111,7 @@ Through the talk he could hear the plaintive cries of the magically-physically e
     what he * If in any way diminished pre-thank you- and you-pleased voters. In short, their twenty-first century- heroes. He wondered, a rare thing for him, whether it would possibly matter if Clinton looked white.  The photo-op closed and a curtain fell over Trump's world.  
 Mrs Clinton's eyes lit up as the shots looped out of the rundown, unlit room. She chewed on her bottom
 ================== 
-Random Generation: 10 - good
+Random Generation: 10 
  
 ff Tony Blair and former ambassador John Bolton, both of whom had once worked in her husband's administration, as their eyes filled with disgust. 
  
@@ -124,20 +124,20 @@ The camera cut away. The camera stopped.
 The lights flickered on and off. Trump's head was shaved off. No hair was left on the top of his head. 
 Trump looked like Trump
 ================== 
-Random Generation: 11 - pretty good
+Random Generation: 11 
  
 f Sam Kass, a blustery operations chief on an hourly basis, onto the screen, pouring images of every kitchen nightmare imaginable upon the green room screens. 
 She saw herself again, watching Trump rise up, eyes certain of her and her husband forever in the heavens of mid-town Manhattan. As he conquered the airwaves with her. A chain of brown paper screens was whirling around her, translating and toasting her dreams into concrete reality. 
 With the blue glow of robotic arms flaring onto screen as hers was quickly vanishing in front of her eyes, the Clinton campaign knew that momentum was leaning heavily their way. She decided she would lean a little harder, hearing her bosses, career politicians, willed by name, tell
 ================== 
-Random Generation: 12 - weird
+Random Generation: 12 
  
  Haven. 
 Trump's football-sized, atomic dancing arm connected to a simple bra wiggly back and forth. He belted up the high notes of the crowd without context, winked helplessly to the California beauty below, and explained to her where exactly her former botch time in If in Hotel Carlo was prelude to the inevitable and inevitable. 
 � Ego fading, twenty-first century blues heroes crooning across the notion, Trump wrapped his drawers around his own musical scriptures and looked at himself; The photo is a disturbing one. 
 When he turned his broken ear towards the screen, he heard some boombox musical accompaniment emanating from the Snidely Whiplash Kicker sculpt , 
 ================== 
-Random Generation: 13 - terrible
+Random Generation: 13 
  
 fs, politicians, and celebrities. 
  
@@ -212,5 +212,5 @@ fs, politicians, and celebrities.
  
  
 ================== 
-Random Generation: 14 - terrible
+Random Generation: 14 
  
