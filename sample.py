@@ -43,15 +43,13 @@ def ema_eff(alpha, vals, k_window_size, window_weights ):
 
 def tail_free(logits, alpha, k_window_size, window_weights):
     #print('logits passed into the tfs', logits.shape)
-    soft = tf.nn.softmax(logits, axis=1)
+    sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
     if alpha is not None:
-        sps = ema_eff(alpha, soft, k_window_size, window_weights)
+        sps = ema_eff(alpha, sps, k_window_size, window_weights)
         '''#print('sps passed into the ema', logits.shape)
         sps = tf.sort(soft, direction='ASCENDING',axis=1)
         sps = ema_calc(sps, alpha)'''
-    else: 
-        sps = tf.sort(soft, direction='DESCENDING',axis=1) #isnt doing any of the reversing
     sps = my_tf_round(sps, 2) # quantization
     grad = sps[:,1:]-sps[:,:-1] # first derivative
     grad = grad[:,1:]-grad[:,:-1] #this is the 2nd derivative
@@ -62,7 +60,7 @@ def tail_free(logits, alpha, k_window_size, window_weights):
     
     def body(i, logits_to_return):
         #print('RUNNING THE TFS BODY CODE!!! ')
-        ids_above_tail = indices[i,:tail_ids[i]+1]
+        ids_above_tail = indices[i,:tail_ids[i]]
         logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
         logit = logits[i, :] + logit_mask
         return [tf.add(i, 1),
@@ -74,12 +72,6 @@ def tail_free(logits, alpha, k_window_size, window_weights):
     i = tf.constant(1, dtype=tf.int32)
     _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
                                       tf.TensorShape([None, logits.shape[1].value])] )
-    
-    '''
-    tail_id_mask = tf.sequence_mask(tail_ids, logits.shape[1].value)
-    ids_above_tails = tf.where(tail_id_mask, indices, tf.ones_like(tail_id_mask, dtype=tf.int32)*-10)
-    logits_mask = tf.cast(tf.math.logical_not(tf.sequence_mask(ids_above_tails, logits.shape[1].value)), tf.float32)*-1e10 # now selecting only the bad logits.    
-    logits = logits+logits_mask'''
 
     return logits_to_return #returning the selected logits. the multinomial takes in logits not softmax. 
 

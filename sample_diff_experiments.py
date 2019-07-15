@@ -2,8 +2,10 @@
 
 from interactive_conditional_samples import interact_model
 
-vals_dict = {'tfs':[None, 0.01, 0.05, 0.1, 0.5, 0.75 ],
-'n': [0.1, 0.25, 0.5, 0.75, 0.9], 'k':[1,10,40,200]  }
+vals_dict = {'tfs':[0.01, 0.05, 0.1, 0.5, 0.75 ], 'k':[200]  }
+
+'''{'tfs':[None, 0.01, 0.05, 0.1, 0.5, 0.75 ],
+'n': [0.1, 0.25, 0.5, 0.75, 0.9], 'k':[1,10,40,200]  }'''
 
 variants_to_sample = ['tfs']#['n', 'k', 'tfs']
 
