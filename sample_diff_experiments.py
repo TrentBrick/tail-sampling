@@ -7,13 +7,11 @@ vals_dict = {'tfs':[0.01, 0.05, 0.1, 0.5, 0.75 ], 'k':[200]  }
 '''{'tfs':[None, 0.01, 0.05, 0.1, 0.5, 0.75 ],
 'n': [0.1, 0.25, 0.5, 0.75, 0.9], 'k':[1,10,40,200]  }'''
 
-variants_to_sample = ['tfs']#['n', 'k', 'tfs']
-
 alpha_set = nuc_prob_set = top_k_set = 0
 
-for samp_strat in variants_to_sample: 
+for samp_strat, values in vals_dict.items(): 
 
-    for val in vals_dict[samp_strat]: 
+    for val in values: 
 
         if samp_strat=='tfs':
             alpha_set=val
