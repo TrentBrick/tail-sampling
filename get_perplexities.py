@@ -142,7 +142,7 @@ def interact_model( # some other variables are initialized below
                 
                 print(tf.shape(batch_logits))
                 #adding to the list of all logits. 
-                all_logits.append(batch_logits)
+                all_perplexities.append(batch_logits)
 
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
@@ -157,7 +157,7 @@ def interact_model( # some other variables are initialized below
             print("=" * 80)
 
         #saving all of the logits into a pickle after all the prompts are iterated through:
-        pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
+        pickle.dump(all_perplexities, gzip.open(general_path+'gpt-2_output/'+'all_perplexities_'+experiment_name+'.pickle.gz', 'wb'))
         pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
 
 
