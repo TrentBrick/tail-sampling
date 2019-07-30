@@ -18,17 +18,17 @@ def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=Non
 
     lm_output = model.model(hparams=hparams, X=context, past=past, reuse=tf.AUTO_REUSE)
 
-        print('results from the model', lm_output.shape)
-        print('logits pre seelction of 0',lm_output['logits'].shape)
+    print('results from the model', lm_output.shape)
+    print('logits pre seelction of 0',lm_output['logits'].shape)
 
-        logits = lm_output['logits'][:, :, :hparams.n_vocab]
-        print('shape of the lgotis', logits.shape)
-        presents = lm_output['present']
-        presents.set_shape(model.past_shape(hparams=hparams, batch_size=batch_size))
-        return {
-            'logits': logits,
-            'presents': presents,
-        }
+    logits = lm_output['logits'][:, :, :hparams.n_vocab]
+    print('shape of the lgotis', logits.shape)
+    presents = lm_output['present']
+    presents.set_shape(model.past_shape(hparams=hparams, batch_size=batch_size))
+    return {
+        'logits': logits,
+        'presents': presents,
+    }
 
 def sample_sequence(*, hparams, length, start_token=None, batch_size=None, context=None):
     if start_token is None:

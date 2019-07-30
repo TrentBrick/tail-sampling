@@ -49,7 +49,7 @@ def interact_model( # some other variables are initialized below
     seed=27,
     batch_size=25, # 500
     softmax_output_size = 50527,
-    to_perp_length = 100
+    to_perp_length = 100,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -62,7 +62,7 @@ def interact_model( # some other variables are initialized below
     experiment_name = "perplexity_scores_for_the_dataset_%s" %(pre_prepared_to_perplex_data_path)
 
     np.random.seed(seed)
-    print('dataframe being loaded in',pre_prepared_prompts_data_path)
+    print('dataframe being loaded in',pre_prepared_to_perplex_data_path)
     df=pd.read_csv(pre_prepared_prompts_data_path)
  
     start = np.arange(0,df.shape[0],batch_size)
