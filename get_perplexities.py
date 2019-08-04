@@ -57,7 +57,7 @@ def interact_model( # some other variables are initialized below
     
     # initializing some other variables ==========
     nsamples=batch_size # should equal the batch size. 
-    pre_prepared_to_perplex_data_path = general_path+'.csv'
+    pre_prepared_to_perplex_data_path = general_path+'human_prompt_completion.csv'
 
     experiment_name = "perplexity_scores_for_the_dataset_%s" %(pre_prepared_to_perplex_data_path)
 
