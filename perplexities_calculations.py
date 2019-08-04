@@ -6,34 +6,22 @@ import model
 Calculates the perplexities at every time point for the input sentence. 
 """
 
+def log2(x):
+  numerator = tf.log(x)
+  denominator = tf.log(tf.constant(2, dtype=numerator.dtype))
+  return numerator / denominator
 
 def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=None):
-    if start_token is None:
-        assert context is not None, 'Specify exactly one of start_token and context!' # this is where the whole context is already given into the model. 
-        # it is the primer that I write for it! 
-    else:
-        assert context is None, 'Specify exactly one of start_token and context!'
-        context = tf.fill([batch_size, 1], start_token) # this is not used in my case! 
-
-
+    
     lm_output = model.model(hparams=hparams, X=context, past=past, reuse=tf.AUTO_REUSE)
 
-    print('results from the model', lm_output.shape)
     print('logits pre seelction of 0',lm_output['logits'].shape)
 
-    logits = lm_output['logits'][:, :, :hparams.n_vocab]
-    print('shape of the lgotis', logits.shape)
-    '''
-    presents = lm_output['present']
-    presents.set_shape(model.past_shape(hparams=hparams, batch_size=batch_size))
-    return {
-        'logits': logits,
-        'presents': presents,
-    }'''
+    # this has all of the logits for the entire context. 
+    batch_perplexities = tf.math.pow(2, ( - tf.reduce_sum( lm_output['logits']*log2(lm_output['logits']), axis=2)))
+    batch_logits = lm_output['logits']
 
-    # need to use lm_output to append on the next word and then get the perplexities. 
-
-    return (tokens, all_logits_out )
+    return (batch_perplexities, batch_logits )
 
 def sample_sequence(*, hparams, length, start_token=None, batch_size=None, context=None):
     if start_token is None:
@@ -46,11 +34,11 @@ def sample_sequence(*, hparams, length, start_token=None, batch_size=None, conte
     def step(hparams, tokens, past=None):
         lm_output = model.model(hparams=hparams, X=tokens, past=past, reuse=tf.AUTO_REUSE)
 
-        print('results from the model', lm_output.shape)
-        print('logits pre seelction of 0',lm_output['logits'].shape)
+        #print('results from the model', lm_output.shape)
+        #print('logits pre seelction of 0',lm_output['logits'].shape)
 
-        logits = lm_output['logits'][:, :, :hparams.n_vocab]
-        print('shape of the lgotis', logits.shape)
+        logits = lm_output['logits'][:, :, :hparams.n_vocab] # only does anything if trying to restrict the vocab length. 
+        #print('shape of the lgotis', logits.shape)
         presents = lm_output['present']
         presents.set_shape(model.past_shape(hparams=hparams, batch_size=batch_size))
         return {

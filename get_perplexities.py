@@ -58,13 +58,13 @@ def interact_model( # some other variables are initialized below
     
     # initializing some other variables ==========
     nsamples=batch_size # should equal the batch size. 
-    pre_prepared_to_perplex_data_path = general_path+'human_prompt_completion.csv'
+    pre_prepared_to_perplex_data_path = general_path+'Human_StoryPrompts_Completion.csv'
 
     experiment_name = "perplexity_scores_for_the_dataset_%s" %(pre_prepared_to_perplex_data_path)
 
     np.random.seed(seed)
     print('dataframe being loaded in',pre_prepared_to_perplex_data_path)
-    df=pd.read_csv(pre_prepared_prompts_data_path)
+    df=pd.read_csv(pre_prepared_to_perplex_data_path)
  
     start = np.arange(0,df.shape[0],batch_size)
     end = start + batch_size
@@ -80,6 +80,8 @@ def interact_model( # some other variables are initialized below
     with open(os.path.join(models_dir, model_name, 'hparams.json')) as f:
         hparams.override_from_dict(json.load(f))
 
+    generated_length=150
+
     if generated_length is None:
         generated_length = hparams.n_ctx // 2
     elif generated_length > hparams.n_ctx:
@@ -88,13 +90,14 @@ def interact_model( # some other variables are initialized below
     
     #saving all of the perplexities from the different batches taken in:
     all_perplexities = []
-    all_token_probs = []
+    all_logits = []
+    all_text = []
 
     with tf.Session(graph=tf.Graph()) as sess:
         context = tf.placeholder(tf.int32, [batch_size, None])
         np.random.seed(seed)
         tf.set_random_seed(seed)
-        output = perplexities_calculations.sample_sequence(
+        output = perplexities_calculations.perp_calc(
             hparams=hparams, length=generated_length,
             context=context,
             batch_size=batch_size)
@@ -131,27 +134,19 @@ def interact_model( # some other variables are initialized below
                                     context: contexts_batch
                                 })
 
-                batch_perps = out[1]
+                batch_perps = out[0]
 
-                batch_probs = out[2]
-
+                batch_logits = out[1]
                 # rounding up their values. 
                 #batch_perps = tf.cast(batch_perps, tf.float16)
 
-                out = out[0] # the original output which is the generated sequence
-                
-                all_text.append(out) # adding text including what the prompt was.
-                
-                out = out[:, shortest:] #gets rid of the prompt from the outputs. 
-                
                 print(tf.shape(batch_perps))
                 #adding to the list of all logits. 
                 all_perplexities.append(batch_perps)
-                all_token_probs.append(batch_probs)
+                all_logits.append(batch_logits)
+                all_text.append(contexts_batch)
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
-                
-                
 
                 for i in range(batch_size):
                     generated += 1
@@ -162,6 +157,7 @@ def interact_model( # some other variables are initialized below
 
         #saving all of the logits into a pickle after all the prompts are iterated through:
         pickle.dump(all_perplexities, gzip.open(general_path+'gpt-2_output/'+'all_perplexities_'+experiment_name+'.pickle.gz', 'wb'))
+        pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
         pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
 
 
