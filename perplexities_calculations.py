@@ -23,12 +23,17 @@ def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=Non
 
     logits = lm_output['logits'][:, :, :hparams.n_vocab]
     print('shape of the lgotis', logits.shape)
+    '''
     presents = lm_output['present']
     presents.set_shape(model.past_shape(hparams=hparams, batch_size=batch_size))
     return {
         'logits': logits,
         'presents': presents,
-    }
+    }'''
+
+    # need to use lm_output to append on the next word and then get the perplexities. 
+
+    return (tokens, all_logits_out )
 
 def sample_sequence(*, hparams, length, start_token=None, batch_size=None, context=None):
     if start_token is None:
@@ -118,4 +123,4 @@ def sample_sequence(*, hparams, length, start_token=None, batch_size=None, conte
         end = tf.timestamp() - start
         print(' +++++++++++++++++++++ time taken to run sampling loop', end, '+++++++++++++++++++++++')
 
-        return (tokens, all_logits_out)
+        return (tokens, all_logits_out )

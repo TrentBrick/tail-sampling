@@ -7,12 +7,13 @@ import pandas as pd
 import tensorflow as tf
 import pickle
 import gzip
-import model, calc_perplexities, encoder
+import model, perplexities_calculations, encoder
 
 """
 
 Input data for which perplexities are returned at every time point. 
 
+Also get the probability that the model assigns to the real world chosen.
 """
 
 
@@ -87,12 +88,13 @@ def interact_model( # some other variables are initialized below
     
     #saving all of the perplexities from the different batches taken in:
     all_perplexities = []
+    all_token_probs = []
 
     with tf.Session(graph=tf.Graph()) as sess:
         context = tf.placeholder(tf.int32, [batch_size, None])
         np.random.seed(seed)
         tf.set_random_seed(seed)
-        output = sample.sample_sequence(
+        output = perplexities_calculations.sample_sequence(
             hparams=hparams, length=generated_length,
             context=context,
             batch_size=batch_size)
@@ -109,7 +111,7 @@ def interact_model( # some other variables are initialized below
 
             contexts_batch = []
             for ind in range(s, e):
-                raw_text = df.loc[ind, 'ToPerp']
+                raw_text = df.loc[ind, 'Rest of Prompt']
                 #print(' ========= raw text prompt ========== \n', raw_text)
                 #print('========== end of raw text ==========')
                 contexts_batch.append(enc.encode(raw_text))
@@ -129,10 +131,12 @@ def interact_model( # some other variables are initialized below
                                     context: contexts_batch
                                 })
 
-                batch_logits = out[1]
+                batch_perps = out[1]
+
+                batch_probs = out[2]
 
                 # rounding up their values. 
-                #batch_logits = tf.cast(batch_logits, tf.float16)
+                #batch_perps = tf.cast(batch_perps, tf.float16)
 
                 out = out[0] # the original output which is the generated sequence
                 
@@ -140,10 +144,10 @@ def interact_model( # some other variables are initialized below
                 
                 out = out[:, shortest:] #gets rid of the prompt from the outputs. 
                 
-                print(tf.shape(batch_logits))
+                print(tf.shape(batch_perps))
                 #adding to the list of all logits. 
-                all_perplexities.append(batch_logits)
-
+                all_perplexities.append(batch_perps)
+                all_token_probs.append(batch_probs)
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
                 
