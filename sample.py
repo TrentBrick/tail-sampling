@@ -78,9 +78,56 @@ def tail_free_EMA_window_old(logits, alpha, k_window_size, window_weights):
 
 def tail_free(logits, p):
 
+    sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
+    indices = tf.argsort(logits, direction='DESCENDING', axis=1)
+    #sps = my_tf_round(sps, 3) # quantization
+    grad = sps[:,1:]-sps[:,:-1] # first derivative
+    grad = grad[:,1:]-grad[:,:-1] #this is the 2nd derivative
+
+    only_pos = tf.math.abs(grad)
+    sec_indices = tf.range(grad.shape[1].value)
+    sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1 )
+    
+    # do cum sum for the combo (seems to be more theoretically robust)
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)
+
+    while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    def body(i, logits_to_return):
+        ids_above_tail = indices[i,:tail_ids[i]+1]
+        logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
+        logit = logits[i, :] + logit_mask
+        return [tf.add(i, 1),
+               tf.expand_dims(logit, axis=0) if logits_to_return is None else tf.concat([logits_to_return, tf.expand_dims(logit, axis=0)], axis=0) 
+        ]
+    
+    i = tf.constant(0, dtype=tf.int32)
+    _, logits_to_return = body(i, None)
+    i = tf.constant(1, dtype=tf.int32)
+    _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
+                                      tf.TensorShape([None, logits.shape[1].value])] )
+    
+    return logits_to_return
 
 def flat_perc(logits, p):
+    sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
+    indices = tf.argsort(logits, direction='DESCENDING', axis=1)
+    tail_ids=tf.cast(sps.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(sps,axis=[1]), 0.001),tf.int8) ,axis=1 ), tf.int32)
 
+    while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    def body(i, logits_to_return):
+        ids_above_tail = indices[i,:tail_ids[i]+1]
+        logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
+        logit = logits[i, :] + logit_mask
+        return [tf.add(i, 1),
+               tf.expand_dims(logit, axis=0) if logits_to_return is None else tf.concat([logits_to_return, tf.expand_dims(logit, axis=0)], axis=0) 
+        ]
+    
+    i = tf.constant(0, dtype=tf.int32)
+    _, logits_to_return = body(i, None)
+    i = tf.constant(1, dtype=tf.int32)
+    _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
+                                      tf.TensorShape([None, logits.shape[1].value])] )
+    
     return logits_to_return
 
 def nucleus(logits, p):
@@ -167,7 +214,7 @@ k_window_size=None, window_weights=None):
                 logits = nucleus(logits, p=nuc_prob)
             elif sampler=='tfs':
                 print('using tail free sampling')
-                logits = tail_free(logits, alpha, k_window_size, window_weights)
+                logits = tail_free(logits, alpha) #, k_window_size, window_weights)
             elif sampler=='flat':
                 print('using flat percentage sampling')
                 logits = flat_perc(logits, flat_prob)

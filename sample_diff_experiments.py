@@ -13,7 +13,7 @@ for samp_strat, values in vals_dict.items():
     for val in values: 
 
         if samp_strat=='tfs':
-            alpha_set=val
+            alpha_set=val # this is actually now a probability threshold
         elif samp_strat=='n':
             nuc_prob_set=val
         elif samp_strat=='flat':

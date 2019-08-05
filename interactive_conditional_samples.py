@@ -130,7 +130,7 @@ def interact_model( # some other variables are initialized below
             context=context,
             batch_size=batch_size,
             temperature=temperature, sampler=sampler, 
-            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob,
+            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob, flat_prob=flat_prob
             k_window_size = k_window_size, window_weights=window_weights
     ) # 'n' is nucleus, 'k' is topk, 'tfs', is tail free sampling
 
