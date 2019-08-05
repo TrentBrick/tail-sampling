@@ -86,7 +86,7 @@ def tail_free(logits, p):
 
     only_pos = tf.math.abs(grad)
     sec_indices = tf.range(grad.shape[1].value)
-    sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1 )
+    sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1, keepdims=True )
     
     # do cum sum for the combo (seems to be more theoretically robust)
     tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)

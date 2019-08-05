@@ -7,9 +7,11 @@ Calculates the perplexities at every time point for the input sentence.
 """
 
 def log2(x):
-  numerator = tf.log(x)
-  denominator = tf.log(tf.constant(2, dtype=numerator.dtype))
-  return numerator / denominator
+    # first correct for any 0 values. 
+    x= x+0.000000001
+    numerator = tf.log(x)
+    denominator = tf.log(tf.constant(2, dtype=numerator.dtype))
+    return numerator / denominator
 
 def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=None):
     

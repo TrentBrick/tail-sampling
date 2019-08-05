@@ -25,7 +25,7 @@ for samp_strat, values in vals_dict.items():
             general_path = '',
             alpha=alpha_set,
             nuc_prob=nuc_prob_set,
-            flat_prob = flat_set
+            flat_prob = flat_set,
             sampler=samp_strat, #n, k or tfs
             pre_prepared_prompts = True, 
             num_prepared_prompts_wanted = 100, #5000

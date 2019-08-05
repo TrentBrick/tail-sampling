@@ -122,7 +122,7 @@ def interact_model( # some other variables are initialized below
     all_text = []
 
     with tf.Session(graph=tf.Graph()) as sess:
-        context = tf.placeholder(tf.int32, [None, None])
+        context = tf.placeholder(tf.int32, [batch_size, None])
         np.random.seed(seed)
         tf.set_random_seed(seed)
         output = sample.sample_sequence(
@@ -130,7 +130,7 @@ def interact_model( # some other variables are initialized below
             context=context,
             batch_size=batch_size,
             temperature=temperature, sampler=sampler, 
-            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob, flat_prob=flat_prob
+            top_k=top_k, alpha=alpha, nuc_prob=nuc_prob, flat_prob=flat_prob,
             k_window_size = k_window_size, window_weights=window_weights
     ) # 'n' is nucleus, 'k' is topk, 'tfs', is tail free sampling
 
@@ -152,7 +152,7 @@ def interact_model( # some other variables are initialized below
                     #print('========== end of raw text ==========')
                     contexts_batch.append(enc.encode(raw_text))
                 shortest = prompt_length #only want it to be 200 tokens. #len(min(contexts_batch)) # ensuring that the contexts are all the same length
-                print('the max length all trimmed to is:', shortest)
+                print('the max length all prompts are trimmed to is:', shortest)
                 print('the shortest length is',len(min(contexts_batch)))
                 print('the longest is:', len(max(contexts_batch)))
                 contexts_batch = [c[:shortest] for c in contexts_batch]
