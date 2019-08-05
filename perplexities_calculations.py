@@ -13,12 +13,12 @@ def log2(x):
 
 def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=None):
     
-    lm_output = model.model(hparams=hparams, X=context, past=past, reuse=tf.AUTO_REUSE)
+    lm_output = model.model(hparams=hparams, X=context, past=None, reuse=tf.AUTO_REUSE)
 
     print('logits pre seelction of 0',lm_output['logits'].shape)
 
     # this has all of the logits for the entire context. 
-    batch_perplexities = tf.math.pow(2, ( - tf.reduce_sum( lm_output['logits']*log2(lm_output['logits']), axis=2)))
+    batch_perplexities = tf.math.pow(2.0, ( - tf.reduce_sum( lm_output['logits']*log2(lm_output['logits']), axis=2)))
     batch_logits = lm_output['logits']
 
     return (batch_perplexities, batch_logits )

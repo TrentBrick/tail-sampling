@@ -50,7 +50,7 @@ def interact_model( # some other variables are initialized below
     seed=27,
     batch_size=25, # 500
     softmax_output_size = 50527,
-    to_perp_length = 100,
+    to_perp_length = 150,
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -119,15 +119,20 @@ def interact_model( # some other variables are initialized below
                 #print('========== end of raw text ==========')
                 contexts_batch.append(enc.encode(raw_text))
             
+            for c in contexts_batch: 
+                if len(c) < to_perp_length
+                print("prompt ", ind, 'is of insufficient length', len(c))
+
+
             '''shortest = to_perp_length #only want it to be 200 tokens. #len(min(contexts_batch)) # ensuring that the contexts are all the same length
             print('the max length all trimmed to is:', shortest)
             print('the shortest length is',len(min(contexts_batch)))
             print('the longest is:', len(max(contexts_batch)))
             contexts_batch = [c[:shortest] for c in contexts_batch]'''
 
-            for c in contexts_batch: 
-                assert len(c) == to_perp_length, "All sentences must be the same token length else batch size =1 or introduce padding"
+            contexts_batch = [c[:to_perp_length] for c in contexts_batch if len(c)>=to_perp_length]
 
+            
             generated = 0
             for _ in range(nsamples // batch_size): 
                 out = sess.run(output, feed_dict={
