@@ -2,12 +2,11 @@
 
 from interactive_conditional_samples import interact_model
 
-vals_dict = {'tfs':[0.01, 0.05, 0.1, 0.5, 0.75 ], 'k':[200]  }
+vals_dict = {'tfs':[0.25, 0.75, 0.9, 0.95, 0.99], 'flat':[0.01, 0.02, 0.05]  }
 
-'''{'tfs':[None, 0.01, 0.05, 0.1, 0.5, 0.75 ],
-'n': [0.1, 0.25, 0.5, 0.75, 0.9], 'k':[1,10,40,200]  }'''
+'''{'n': [0.1, 0.25, 0.5, 0.75, 0.9], 'k':[1,10,40,200]  }'''
 
-alpha_set = nuc_prob_set = top_k_set = 0
+alpha_set = flat_set = nuc_prob_set = top_k_set = 0
 
 for samp_strat, values in vals_dict.items(): 
 
@@ -17,6 +16,8 @@ for samp_strat, values in vals_dict.items():
             alpha_set=val
         elif samp_strat=='n':
             nuc_prob_set=val
+        elif samp_strat=='flat':
+            flat_set=val
         else: 
             top_k_set=val
 
@@ -24,6 +25,7 @@ for samp_strat, values in vals_dict.items():
             general_path = '',
             alpha=alpha_set,
             nuc_prob=nuc_prob_set,
+            flat_prob = flat_set
             sampler=samp_strat, #n, k or tfs
             pre_prepared_prompts = True, 
             num_prepared_prompts_wanted = 100, #5000

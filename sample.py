@@ -41,7 +41,7 @@ def ema_eff(alpha, vals, k_window_size, window_weights ):
     print('out shape', out.shape)
     return out
 
-def tail_free(logits, alpha, k_window_size, window_weights):
+def tail_free_EMA_window_old(logits, alpha, k_window_size, window_weights):
     #print('logits passed into the tfs', logits.shape)
     sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
@@ -74,6 +74,14 @@ def tail_free(logits, alpha, k_window_size, window_weights):
                                       tf.TensorShape([None, logits.shape[1].value])] )
 
     return logits_to_return #returning the selected logits. the multinomial takes in logits not softmax. 
+
+
+def tail_free(logits, p):
+
+
+def flat_perc(logits, p):
+
+    return logits_to_return
 
 def nucleus(logits, p):
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
@@ -119,7 +127,7 @@ def top_k_logits(logits, k):
 
 
 def sample_sequence(*, hparams, length, start_token=None, batch_size=None, context=None, 
-sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25, 
+sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25, flat_prob=0.02,
 k_window_size=None, window_weights=None):
     if start_token is None:
         assert context is not None, 'Specify exactly one of start_token and context!' # this is where the whole context is already given into the model. 
@@ -160,6 +168,9 @@ k_window_size=None, window_weights=None):
             elif sampler=='tfs':
                 print('using tail free sampling')
                 logits = tail_free(logits, alpha, k_window_size, window_weights)
+            elif sampler=='flat':
+                print('using flat percentage sampling')
+                logits = flat_perc(logits, flat_prob)
             else: 
                 print('defauling to top k sampling')
                 logits = top_k_logits(logits, k=top_k)

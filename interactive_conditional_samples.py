@@ -35,6 +35,7 @@ def interact_model( # some other variables are initialized below
     general_path = '',
     alpha=None,
     nuc_prob=0.25,
+    flat_prob = None,
     sampler='tfs', #n, k or tfs
     perc_acc=0.99,
     pre_prepared_prompts = True, 
@@ -76,6 +77,9 @@ def interact_model( # some other variables are initialized below
 
     elif sampler=='n':
         sampling_param=nuc_prob
+
+    elif sampler=='flat':
+        sampling_param=flat_prob
         
     else: 
         sampling_param=top_k
@@ -118,7 +122,7 @@ def interact_model( # some other variables are initialized below
     all_text = []
 
     with tf.Session(graph=tf.Graph()) as sess:
-        context = tf.placeholder(tf.int32, [batch_size, None])
+        context = tf.placeholder(tf.int32, [None, None])
         np.random.seed(seed)
         tf.set_random_seed(seed)
         output = sample.sample_sequence(
@@ -190,8 +194,6 @@ def interact_model( # some other variables are initialized below
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
                 
-                
-
                 for i in range(batch_size):
                     generated += 1
                     text = enc.decode(out[i])
