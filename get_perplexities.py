@@ -94,7 +94,7 @@ def interact_model( # some other variables are initialized below
     all_text = []
 
     with tf.Session(graph=tf.Graph()) as sess:
-        context = tf.placeholder(tf.int32, [batch_size, None])
+        context = tf.placeholder(tf.int32, [None, None])
         np.random.seed(seed)
         tf.set_random_seed(seed)
         output = perplexities_calculations.perp_calc(
@@ -119,9 +119,9 @@ def interact_model( # some other variables are initialized below
                 #print('========== end of raw text ==========')
                 contexts_batch.append(enc.encode(raw_text))
             
-            for c in contexts_batch: 
-                if len(c) < to_perp_length
-                print("prompt ", ind, 'is of insufficient length', len(c))
+            for c_len_ind, c in enumerate(contexts_batch): 
+                if len(c) < to_perp_length:
+                    print("prompt ", c_len_ind, 'is of insufficient length', len(c))
 
 
             '''shortest = to_perp_length #only want it to be 200 tokens. #len(min(contexts_batch)) # ensuring that the contexts are all the same length
@@ -152,13 +152,6 @@ def interact_model( # some other variables are initialized below
                 all_text.append(contexts_batch)
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
-
-                for i in range(batch_size):
-                    generated += 1
-                    text = enc.decode(out[i])
-                    print("=" * 40 + " GENERATED SAMPLE " + str(generated) + " " + "=" * 40)
-                    print(text)
-            print("=" * 80)
 
         #saving all of the logits into a pickle after all the prompts are iterated through:
         pickle.dump(all_perplexities, gzip.open(general_path+'gpt-2_output/'+'all_perplexities_'+experiment_name+'.pickle.gz', 'wb'))
