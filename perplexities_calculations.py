@@ -8,7 +8,6 @@ Calculates the perplexities at every time point for the input sentence.
 
 def log2(x):
     # first correct for any 0 values. 
-    x= x+0.000000001
     numerator = tf.log(x)
     denominator = tf.log(tf.constant(2, dtype=numerator.dtype))
     return numerator / denominator
@@ -19,8 +18,10 @@ def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=Non
 
     print('logits pre seelction of 0',lm_output['logits'].shape)
 
+    probs = tf.nn.softmax(logits, axis=2)
+
     # this has all of the logits for the entire context. 
-    batch_perplexities = tf.math.pow(2.0, ( - tf.reduce_sum( lm_output['logits']*log2(lm_output['logits']), axis=2)))
+    batch_perplexities = tf.math.pow(2.0, ( - tf.reduce_sum( probs*log2(probs+0.000000001), axis=2)))
     batch_logits = lm_output['logits']
 
     return (batch_perplexities, batch_logits )
