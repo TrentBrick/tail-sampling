@@ -59,7 +59,7 @@ def interact_model( # some other variables are initialized below
     
     # initializing some other variables ==========
     nsamples=batch_size # should equal the batch size. 
-    pre_prepared_to_perplex_data_path = general_path+'test_dataframe_500primer_only.csv'
+    pre_prepared_to_perplex_data_path = general_path+'Human_StoryPrompts_Completion.csv'
 
     experiment_name = "perplexity_scores_for_the_dataset_%s" %(pre_prepared_to_perplex_data_path)
 
@@ -115,7 +115,7 @@ def interact_model( # some other variables are initialized below
 
             contexts_batch = []
             for ind in range(s, e):
-                raw_text = df.loc[ind, 'Prompt']
+                raw_text = df.loc[ind, 'Prompt And Completion']
                 #print(' ========= raw text prompt ========== \n', raw_text)
                 #print('========== end of raw text ==========')
                 contexts_batch.append(enc.encode(raw_text))
