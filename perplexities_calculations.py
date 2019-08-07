@@ -18,7 +18,7 @@ def perp_calc(*, hparams, length, start_token=None, batch_size=None, context=Non
 
     print('logits pre seelction of 0',lm_output['logits'].shape)
 
-    probs = tf.nn.softmax(logits, axis=2)
+    probs = tf.nn.softmax(lm_output['logits'], axis=2)
 
     # this has all of the logits for the entire context. 
     batch_perplexities = tf.math.pow(2.0, ( - tf.reduce_sum( probs*log2(probs+0.000000001), axis=2)))

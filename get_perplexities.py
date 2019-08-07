@@ -50,7 +50,8 @@ def interact_model( # some other variables are initialized below
     seed=27,
     batch_size=25, # 500
     softmax_output_size = 50527,
-    to_perp_length = 150,
+    to_perp_length = 250, # as need to add the prompt and the completion
+    prompt_length = 100, # will trim off of what is returned. 
     temperature=1,
     top_k=0,
     models_dir='../gpt-2/models',    
@@ -58,7 +59,7 @@ def interact_model( # some other variables are initialized below
     
     # initializing some other variables ==========
     nsamples=batch_size # should equal the batch size. 
-    pre_prepared_to_perplex_data_path = general_path+'Human_StoryPrompts_Completion.csv'
+    pre_prepared_to_perplex_data_path = general_path+'test_dataframe_500primer_only.csv'
 
     experiment_name = "perplexity_scores_for_the_dataset_%s" %(pre_prepared_to_perplex_data_path)
 
@@ -114,7 +115,7 @@ def interact_model( # some other variables are initialized below
 
             contexts_batch = []
             for ind in range(s, e):
-                raw_text = df.loc[ind, 'Rest of Prompt']
+                raw_text = df.loc[ind, 'Prompt']
                 #print(' ========= raw text prompt ========== \n', raw_text)
                 #print('========== end of raw text ==========')
                 contexts_batch.append(enc.encode(raw_text))
@@ -147,8 +148,8 @@ def interact_model( # some other variables are initialized below
 
                 print(tf.shape(batch_perps))
                 #adding to the list of all logits. 
-                all_perplexities.append(batch_perps)
-                all_logits.append(batch_logits)
+                all_perplexities.append(batch_perps[:,prompt_length:])
+                all_logits.append(batch_logits[:,prompt_length:,:])
                 all_text.append(contexts_batch)
                 #print('see what the first out looks like! before decoding', out[0])
                 #print('out decoding index 0-50257', enc.decode(np.arange(0,50257)))
