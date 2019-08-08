@@ -122,6 +122,8 @@ def interact_model( # some other variables are initialized below
     #saving the actual text that was produced
     all_text = []
 
+    batch_times = []
+
     with tf.Session(graph=tf.Graph()) as sess:
         context = tf.placeholder(tf.int32, [batch_size, None])
         np.random.seed(seed)
@@ -140,7 +142,6 @@ def interact_model( # some other variables are initialized below
         saver.restore(sess, ckpt)
 
         # CHANGE THIS TO BE IN RANGE NUM_PREPARED PROMPTS AND IT WILL GIVE REPEAT SAMPLES OF THE SAME PROMPT!
-        start_timer = time.time()
         for s, e in zip(start, end): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
             print('==================  start of this batch is:', s)
             print('we are at start index:', s, 'and end:', e)
@@ -166,7 +167,8 @@ def interact_model( # some other variables are initialized below
                 context_tokens = enc.encode(raw_text)
                 shortest = len(context_tokens)
             generated = 0
-            for _ in range(nsamples // batch_size): 
+            for _ in range(nsamples // batch_size): # I have made this so that it is 1.
+                start_timer = time.time()
                 if pre_prepared_prompts==True: #making it so that I can feed multiple prompts into the batch!
                     out = sess.run(output, feed_dict={
                                         context: contexts_batch
@@ -176,6 +178,9 @@ def interact_model( # some other variables are initialized below
                     out = sess.run(output, feed_dict={
                     context: [context_tokens for _ in range(batch_size)]
                 })
+
+                end = time.time() - start_timer
+                batch_times.append(end)
 
                 batch_logits = out[1]
 
@@ -202,10 +207,10 @@ def interact_model( # some other variables are initialized below
                     print(text)
             print("=" * 80)
 
-        end = time.time() - start_timer
+        
         #end = end.numpy()
         print(' +++++++++++++++++++++ time taken to run sampling loop', end, '+++++++++++++++++++++++')
-        pickle.dump(end, gzip.open(general_path+'gpt-2_output/'+'time_taken_for_all_'+experiment_name+'.pickle.gz', 'wb'))
+        pickle.dump(batch_times, gzip.open(general_path+'gpt-2_output/'+'time_taken_for_all_'+experiment_name+'.pickle.gz', 'wb'))
 
         #saving all of the logits into a pickle after all the prompts are iterated through:
         #pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
