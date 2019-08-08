@@ -8,6 +8,7 @@ import tensorflow as tf
 import pickle
 import gzip
 import model, sample, encoder
+import time
 
 """
     Interactively run the model
@@ -86,7 +87,7 @@ def interact_model( # some other variables are initialized below
 
     print('Using the sampling method:::', sampler, 'With parameter:::', sampling_param)
 
-    experiment_name = "%s-sampling-type_%s-sampling-param_%s-word-prompts_%s-gen-length_%s-number-of-prompts" %(sampler,sampling_param,prompt_length, generated_length, num_prepared_prompts_wanted)
+    experiment_name = "%s-sampling-type_%s-sampling-param_%s-word-prompts_%s-gen-length_%s-number-of-prompts_%s-seed" %(sampler,sampling_param,prompt_length, generated_length, num_prepared_prompts_wanted, seed)
 
     start = np.arange(0,num_prepared_prompts_wanted,batch_size)
     end = start + batch_size
@@ -139,7 +140,7 @@ def interact_model( # some other variables are initialized below
         saver.restore(sess, ckpt)
 
         # CHANGE THIS TO BE IN RANGE NUM_PREPARED PROMPTS AND IT WILL GIVE REPEAT SAMPLES OF THE SAME PROMPT!
-        start = tf.timestamp()
+        start_timer = time.time()
         for s, e in zip(start, end): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
             print('==================  start of this batch is:', s)
             print('we are at start index:', s, 'and end:', e)
@@ -201,8 +202,8 @@ def interact_model( # some other variables are initialized below
                     print(text)
             print("=" * 80)
 
-        end = tf.timestamp() - start
-        end = end.numpy()
+        end = time.time() - start_timer
+        #end = end.numpy()
         print(' +++++++++++++++++++++ time taken to run sampling loop', end, '+++++++++++++++++++++++')
         pickle.dump(end, gzip.open(general_path+'gpt-2_output/'+'time_taken_for_all_'+experiment_name+'.pickle.gz', 'wb'))
 

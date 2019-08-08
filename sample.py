@@ -238,8 +238,6 @@ k_window_size=None, window_weights=None):
         def cond(*args):
             return True
 
-        start = tf.timestamp()
-
         _, _, tokens, all_logits_out = tf.while_loop(
                        cond=cond, body=body,
             maximum_iterations=length - 1,
@@ -259,7 +257,5 @@ k_window_size=None, window_weights=None):
             back_prop=False,
         )
 
-        end = tf.timestamp() - start
-        print(' +++++++++++++++++++++ time taken to run sampling loop', end, '+++++++++++++++++++++++')
 
         return (tokens, all_logits_out)
