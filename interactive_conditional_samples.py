@@ -139,7 +139,7 @@ def interact_model( # some other variables are initialized below
         saver.restore(sess, ckpt)
 
         # CHANGE THIS TO BE IN RANGE NUM_PREPARED PROMPTS AND IT WILL GIVE REPEAT SAMPLES OF THE SAME PROMPT!
-
+        start = tf.timestamp()
         for s, e in zip(start, end): #used to be while true but this is always going to be a high enough number. doesnt need to be an infinite loop!
             print('==================  start of this batch is:', s)
             print('we are at start index:', s, 'and end:', e)
@@ -201,11 +201,17 @@ def interact_model( # some other variables are initialized below
                     print(text)
             print("=" * 80)
 
-        #saving all of the logits into a pickle after all the prompts are iterated through:
-        pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
-        pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
-        pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
+        end = tf.timestamp() - start
+        end = end.numpy()
+        print(' +++++++++++++++++++++ time taken to run sampling loop', end, '+++++++++++++++++++++++')
+        pickle.dump(end, gzip.open(general_path+'gpt-2_output/'+'time_taken_for_all_'+experiment_name+'.pickle.gz', 'wb'))
 
+        #saving all of the logits into a pickle after all the prompts are iterated through:
+        #pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
+        #pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
+        #pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
+
+        
 
 if __name__ == '__main__':
     fire.Fire(interact_model)
