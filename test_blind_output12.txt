@@ -3,7 +3,7 @@ Prompt:
 [WP] You've been stranded on an island in the Pacific, completely alone for 73 days. A voice behind you says hello. 
  ``Hello? ''says a calm, inquisitive voice behind me, my body stiffens, my heart beats hard in my chest, and for the longest time I put off looking round, and so I instead listening to the soothing in and out motion of the waves and the cool breeze on my face. I hear walking in the sand and without
 ================== 
-Random Generation: 0 
+Random Generation: 0 pretty good? 2
  
  looking behind me, and I turn to the voice.
 "Who are you?" says the voice. It is a male voice. I turn back and look at the other person.
@@ -12,14 +12,14 @@ The voice says "What, a boy?" And again I turn to the other person.
 "You have to be kidding me." I say, and my body is shaking from the cold and the strange, strange feeling that I am lying flat on my back, and it seems to make me feel lighter, more relaxed, and less nervous, and so I turn back and listen, hoping there is a way out.
 "You have to be kidding me." The voice continues, "You're from New Zealand and you've been
 ================== 
-Random Generation: 1 
+Random Generation: 1 - really good. 1
  
  turning around I see that a few men are there, walking with a rope. I see that one of them has a cane. And I notice that he's speaking very slowly, as if he is walking on his knees, and I notice that he's looking very closely at me.
 I look around, not knowing where I am. Then, in a panic, I run.
 The sound of the waves is very soft. The breeze is also very gentle. And a man walks behind me. I turn around, looking behind me. I see the sun shining through the leaves, then the sun disappears. And I turn back around and see that he is still behind me, his body still stiff, and he has his cane.
 ``
 ================== 
-Random Generation: 2 
+Random Generation: 2 - internally inconsistent. 3
  
  thinking I start walking up to this stranger who has been walking on the beach. There's a lot of sand here, even here in the morning; we've been hiking for 3 days and there's still a lot to do. I step into the small house and begin making conversation. 
 ''Hi, welcome. I was wondering if I could borrow your phone while you walk. We're in Hawaii. It can be quite difficult at times.'' His name is Mr. Kim, he is a very friendly and intelligent guy.  
