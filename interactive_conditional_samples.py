@@ -87,7 +87,7 @@ def interact_model( # some other variables are initialized below
 
     print('Using the sampling method:::', sampler, 'With parameter:::', sampling_param)
 
-    experiment_name = "%s-sampling-type_%s-sampling-param_%s-word-prompts_%s-gen-length_%s-number-of-prompts_%s-seed" %(sampler,sampling_param,prompt_length, generated_length, num_prepared_prompts_wanted, seed)
+    experiment_name = "%s-sampling-type_%s-sampling-param_%s-word-prompts_%s-gen-length_%s-number-of-prompts_%s-seed_%s_model" %(sampler,sampling_param,prompt_length, generated_length, num_prepared_prompts_wanted, seed, model_name)
 
     start = np.arange(0,num_prepared_prompts_wanted,batch_size)
     end = start + batch_size
