@@ -41,7 +41,7 @@ def interact_model( # some other variables are initialized below
     perc_acc=0.99,
     pre_prepared_prompts = True, 
     num_prepared_prompts_wanted = 100, #5000
-    model_name='345M',
+    model_name='774M',
     seed=27,
     batch_size=25, # 500
     generated_length=150,

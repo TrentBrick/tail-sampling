@@ -2,9 +2,8 @@
 import random
 from interactive_conditional_samples import interact_model
 
-vals_dict = {'n':[0.63, 0.69, 0.81]}
-'''{'tfs':[0.25, 0.75, 0.9, 0.95, 0.99], 'flat':[0.01, 0.02, 0.05],
-'n': [0.1, 0.25, 0.5, 0.75, 0.9], 'k':[1,10,40,200]  }'''
+vals_dict = {'tfs':[0.25, 0.75, 0.9, 0.95, 0.99],
+'n': [0.5, 0.63, 0.69, 0.81, 0.75, 0.9], 'k':[1,40,200]  }
 
 #for seed in [28,56,10,40,9]:
 
@@ -37,7 +36,7 @@ for samp_strat, values in vals_dict.items():
             sampler=samp_strat, #n, k or tfs
             pre_prepared_prompts = True, 
             num_prepared_prompts_wanted = 100, #5000
-            model_name='345M',
+            model_name='774M',
             seed=27,
             batch_size=25, # 500
             generated_length=150,

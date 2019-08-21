@@ -46,7 +46,7 @@ def interact_model( # some other variables are initialized below
     sampler='tfs', #n, k or tfs
     perc_acc=0.99,
     pre_prepared_prompts = True,
-    model_name='345M',
+    model_name='774M',
     seed=27,
     batch_size=25, # 500
     softmax_output_size = 50527,
@@ -61,7 +61,7 @@ def interact_model( # some other variables are initialized below
     nsamples=batch_size # should equal the batch size. 
     pre_prepared_to_perplex_data_path = general_path+'Human_StoryPrompts_Completion.csv'
 
-    experiment_name = "perplexity_scores_for_the_dataset_%s" %(pre_prepared_to_perplex_data_path)
+    experiment_name = "perplexity_scores_for_the_dataset_%s-model_%s-seed_%s" %(pre_prepared_to_perplex_data_path,model_name, seed)
 
     np.random.seed(seed)
     print('dataframe being loaded in',pre_prepared_to_perplex_data_path)
