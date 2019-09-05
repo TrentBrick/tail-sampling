@@ -79,8 +79,7 @@ def tail_free_EMA_window_old(logits, alpha, k_window_size, window_weights):
 def tail_free(logits, p):
 
     sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
-    indices = tf.argsort(logits, direction='DESCENDING', axis=1)
-    #sps = my_tf_round(sps, 3) # quantization
+    #indices = tf.argsort(logits, direction='DESCENDING', axis=1)
     grad = sps[:,1:]-sps[:,:-1] # first derivative
     grad = grad[:,1:]-grad[:,:-1] #this is the 2nd derivative
 
@@ -89,9 +88,17 @@ def tail_free(logits, p):
     sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1, keepdims=True )
     
     # do cum sum for the combo (seems to be more theoretically robust)
-    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)+1 # adding one to this
 
-    while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    tail_min_vals = logits[:,tail_ids]
+
+    return tf.where(
+            logits < tail_min_vals, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+
+    '''while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
     def body(i, logits_to_return):
         ids_above_tail = indices[i,:tail_ids[i]+1]
         logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
@@ -106,14 +113,22 @@ def tail_free(logits, p):
     _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
                                       tf.TensorShape([None, logits.shape[1].value])] )
     
-    return logits_to_return
+    return logits_to_return'''
 
 def flat_perc(logits, p):
     sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
-    tail_ids=tf.cast(sps.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(sps,axis=[1]), 0.001),tf.int8) ,axis=1 ), tf.int32)
+    tail_ids=tf.cast(sps.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(sps,axis=[1]), 0.001),tf.int8) ,axis=1 ), tf.int32)+1
 
-    while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    tail_min_vals = logits[:,tail_ids]
+
+    return tf.where(
+            logits < tail_min_vals, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+
+    '''while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
     def body(i, logits_to_return):
         ids_above_tail = indices[i,:tail_ids[i]+1]
         logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
@@ -128,14 +143,22 @@ def flat_perc(logits, p):
     _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
                                       tf.TensorShape([None, logits.shape[1].value])] )
     
-    return logits_to_return
+    return logits_to_return'''
 
 def nucleus(logits, p):
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
     vals = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
-    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(vals, axis=1)>p, tf.int8), axis=1), tf.int32)
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(vals, axis=1)>p, tf.int8), axis=1), tf.int32)+1
 
-    while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    tail_min_vals = logits[:,tail_ids]
+
+    return tf.where(
+            logits < tail_min_vals, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+
+    '''while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
     def body(i, logits_to_return):
         ids_above_tail = indices[i,:tail_ids[i]+1]
         logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
@@ -150,7 +173,7 @@ def nucleus(logits, p):
     _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
                                       tf.TensorShape([None, logits.shape[1].value])] )
     
-    return logits_to_return
+    return logits_to_return'''
 
 
 def top_k_logits(logits, k):
@@ -159,10 +182,10 @@ def top_k_logits(logits, k):
         return logits
 
     def _top_k():
-        values, _ = tf.nn.top_k(logits, k=k)
-        min_values = values[:, -1, tf.newaxis]
+        values, _ = tf.nn.top_k(logits, k=k) # quickly finds the top k out of the logits. returns values for the top K and then the indices. 
+        min_values = values[:, -1, tf.newaxis] # gets the minimum values from each of them. these are the lower bound. batch_size * 1. 
         return tf.where(
-            logits < min_values,
+            logits < min_values, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
             tf.ones_like(logits, dtype=logits.dtype) * -1e10,
             logits,
         )
