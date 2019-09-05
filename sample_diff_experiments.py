@@ -36,7 +36,7 @@ for samp_strat, values in vals_dict.items():
             sampler=samp_strat, #n, k or tfs
             pre_prepared_prompts = True, 
             num_prepared_prompts_wanted = 100, #5000
-            model_name='774M',
+            model_name='774M', # '345M',
             seed=27,
             batch_size=25, # 500
             generated_length=150,

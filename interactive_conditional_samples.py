@@ -210,12 +210,12 @@ def interact_model( # some other variables are initialized below
         
         #end = end.numpy()
         print(' +++++++++++++++++++++ time taken to run sampling loop', end, '+++++++++++++++++++++++')
-        #pickle.dump(batch_times, gzip.open(general_path+'gpt-2_output/'+'time_taken_for_all_'+experiment_name+'.pickle.gz', 'wb'))
+        pickle.dump(batch_times, gzip.open(general_path+'gpt-2_output/'+'time_taken_for_all_'+experiment_name+'.pickle.gz', 'wb'))
 
         #saving all of the logits into a pickle after all the prompts are iterated through:
-        pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
-        pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
-        pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
+        #pickle.dump(rand_selections, gzip.open(general_path+'gpt-2_output/'+'prompt_rand_selections_'+experiment_name+'.pickle.gz', 'wb'))
+        #pickle.dump(all_logits, gzip.open(general_path+'gpt-2_output/'+'all_logits_'+experiment_name+'.pickle.gz', 'wb'))
+        #pickle.dump(all_text, gzip.open(general_path+'gpt-2_output/'+'all_text_'+experiment_name+'.pickle.gz', 'wb'))
 
         
 
