@@ -88,7 +88,7 @@ def tail_free(logits, p):
     sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1, keepdims=True )
     
     # do cum sum for the combo (seems to be more theoretically robust)
-    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)+1 # adding one to this as it is less than sign, will drop this one. 
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32) # adding one to put it in the center of the tail. But only for TFS 
 
     logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
     tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
@@ -119,7 +119,7 @@ def tail_free(logits, p):
 def flat_perc(logits, p):
     sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
-    tail_ids=tf.cast(sps.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(sps,axis=[1]), p),tf.int8) ,axis=1 ), tf.int32)+1
+    tail_ids=tf.cast(sps.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(sps,axis=[1]), p),tf.int8) ,axis=1 ), tf.int32)
 
     logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
     tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
@@ -150,7 +150,7 @@ def flat_perc(logits, p):
 def nucleus(logits, p):
     indices = tf.argsort(logits, direction='DESCENDING', axis=1)
     vals = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
-    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(vals, axis=1)>p, tf.int8), axis=1), tf.int32)+1
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(vals, axis=1)>p, tf.int8), axis=1), tf.int32)
 
     logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
     tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
