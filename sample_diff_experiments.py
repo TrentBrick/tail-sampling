@@ -2,8 +2,8 @@
 import random
 from interactive_conditional_samples import interact_model
 
-vals_dict = {'tfs':[0.25]}#, 0.75, 0.9, 0.95, 0.99],
-#'n': [0.5, 0.63, 0.69, 0.81, 0.75, 0.9], 'k':[1,40,200]  }
+vals_dict = {'tfs':[0.25, 0.75, 0.9, 0.95, 0.99],
+'n': [0.5, 0.63, 0.69, 0.81, 0.75, 0.9], 'k':[1,40,200]  }
 
 alpha_set = flat_set = nuc_prob_set = top_k_set = 0
 

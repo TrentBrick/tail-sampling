@@ -88,7 +88,7 @@ def tail_free(logits, p):
     sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1, keepdims=True )
     
     # do cum sum for the combo (seems to be more theoretically robust)
-    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32) # adding one to put it in the center of the tail. But only for TFS 
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)+1 # adding one to put it in the center of the tail. But only for TFS 
 
     logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
     tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
