@@ -19,8 +19,9 @@ def flat(sps, p):
 def remove_non_words(tokens):
 
     real_words = []
+    relative_positions = []
     d = enchant.Dict("en_US")
-    for t in tokens: 
+    for ind, t in enumerate(tokens): 
         t = decoder_text([t])
         t = t.strip()
         if t == '':
@@ -31,11 +32,12 @@ def remove_non_words(tokens):
                 continue
         if d.check(t):
             real_words.append(t)
-    return real_words
+            relative_positions.append(ind)
+    return [real_words, relative_positions]
     
-def get_specific_positions(tokens, starting_pos):
+def get_specific_positions(tokens, starting_pos, rel_pos):
     if len(tokens)< 3:
         return ([None, None, None], [0,0,0])
     l = len(tokens)
     mid = l//2
-    return ([tokens[0], tokens[mid] ,tokens[-1]], [starting_pos, starting_pos+mid , starting_pos+l])
+    return ([tokens[0], tokens[mid] ,tokens[-1]],  [starting_pos+rel_pos[0], starting_pos+rel_pos[mid] ,starting_pos+rel_pos[-1]])

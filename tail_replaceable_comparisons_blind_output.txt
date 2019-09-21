@@ -1,0 +1,80 @@
+For each of the following assignments, rank on a scale of 1-5 how replaceable each word is, given the provided context. 
+===================================================== 
+ 
+Prompt 0. 
+The 15 words in front: 
+ 
+ Quite often they ’ d sung this term of worship to their sterile, _______
+1. shallow 2.  manufactured 3. expensive 4. Fig 5. white 6. face 7. hots 8. almost 9. indifferent 10. forget 
+ 
+=====================================================
+ 
+Prompt 1. 
+The 15 words in front: 
+ 
+
+ 
+ From his right, he hears a snap, the sound echoing _______
+1. into 2. from 3. far 4. initialized 5. through 6. portal 7. over 8.  throughout 9. back 10. to 
+ 
+=====================================================
+ 
+Prompt 2. 
+The 15 words in front: 
+ 
+ this only meant one thing. There would be no turkey that Thanksgiving. No _______
+1. speaking 2. pumpkin 3. one 4. Asset 5. other 6. big 7. Master 8. Mick 9. mist 10.  stuffing 
+ 
+=====================================================
+ 
+Prompt 3. 
+The 15 words in front: 
+ 
+ the case. 
+ There was a long and complicated paper trail of the _______
+1. Ad 2. DON 3. activity 4. fact 5. work 6. Limit 7. FDA 8. risk 9.  drug 10. kind 
+ 
+=====================================================
+ 
+Prompt 4. 
+The 15 words in front: 
+ 
+ even imagine the hell I had to wade through just to get them to _______
+1. start 2. acknowledge 3. act 4. cumbers 5. Create 6. be 7.  not 8. obey 9. leave 10. buy 
+ 
+=====================================================
+ 
+Prompt 5. 
+The 15 words in front: 
+ 
+`` My name is 28w35, this is my home.'' Its upper _______
+1. hand 2. jaw 3. body 4.  body 5. right 6. torso 7. arms 8. left 9. abase 10. reinforces 
+ 
+=====================================================
+ 
+Prompt 6. 
+The 15 words in front: 
+ 
+ no less immutable than chalk on a blackboard. 
+ 
+ A _______
+1. human 2. small 3. inter 4. few 5. room 6. strange 7. AIDS 8.  lot 9. private 10. matter 
+ 
+=====================================================
+ 
+Prompt 7. 
+The 15 words in front: 
+ 
+'ve kept his watch duty, but guess who got to sit at the polls _______
+1. today 2. to 3. , 4. pitches 5. and 6. anyway 7. the 8. that 9. this 10. cumbers 
+ 
+=====================================================
+ 
+Prompt 8. 
+The 15 words in front: 
+ 
+ sidewalks, you know, in between the wars and money-making ventures and _______
+1. blow 2. what 3. the 4. everything 5. benefits 6. Tunnel 7. matter 8.  things 9. shit 10. greedy 
+ 
+=====================================================
+ 
