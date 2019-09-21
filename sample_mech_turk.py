@@ -1,0 +1,287 @@
+import tensorflow as tf
+import numpy as np
+import model
+
+def ema_calc(vals, alpha):
+    inv_alpha = 1-alpha
+    for i in np.arange(vals.shape[1].value):
+        #print('value of i in the ema calc: ', i)
+        if i == 0:
+            emas = tf.expand_dims(vals[:,i], axis=1)
+        else: 
+            emas = tf.concat([emas, tf.expand_dims(tf.math.multiply(vals[:,i],alpha)+tf.math.multiply(inv_alpha,emas[:,i-1]), axis=1)], axis=1)
+    return tf.reverse(emas, axis=[1])
+
+def my_tf_round(x, decimals = 0):
+    multiplier = tf.constant(10**decimals, dtype=x.dtype)
+    return tf.round(x * multiplier) / multiplier
+
+def ema_eff(alpha, vals, k_window_size, window_weights ):
+
+    padding = k_window_size -1
+    # THIS CAN BE DONE IN A BATCH V EFFICIENTLY
+    #out = torch.nn.functional.conv1d(torch.from_numpy(vals).unsqueeze(0).unsqueeze(1).double(),torch.from_numpy(window_weights).unsqueeze(0).unsqueeze(1), padding=p )
+    
+    print('ema eff shape', vals.shape)
+
+    padding = k_window_size -1
+
+    tensor_paddings = tf.constant([[0, 0], 
+                            [padding, padding],
+                            [0,0]])
+    print('vals shape pre conv op', vals.shape)
+
+    # need to give the output vals a channel: 
+    vals = tf.expand_dims(vals, axis=2 )
+
+    vals = tf.pad(vals, tensor_paddings, "CONSTANT")
+    out = tf.cast(tf.nn.conv1d(vals, window_weights, padding='VALID', stride=1 ), tf.float32) #.astype(tf.float32)
+    print('out shape', out.shape)
+    out = tf.math.multiply(alpha,out[:,padding:,0])
+    print('out shape', out.shape)
+    return out
+
+def tail_free_EMA_window_old(logits, alpha, k_window_size, window_weights):
+    #print('logits passed into the tfs', logits.shape)
+    sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
+    indices = tf.argsort(logits, direction='DESCENDING', axis=1)
+    if alpha is not None:
+        sps = ema_eff(alpha, sps, k_window_size, window_weights)
+        '''#print('sps passed into the ema', logits.shape)
+        sps = tf.sort(soft, direction='ASCENDING',axis=1)
+        sps = ema_calc(sps, alpha)'''
+    sps = my_tf_round(sps, 2) # quantization
+    grad = sps[:,1:]-sps[:,:-1] # first derivative
+    grad = grad[:,1:]-grad[:,:-1] #this is the 2nd derivative
+
+    tail_ids = tf.cast(grad.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(grad,axis=[1]), 0.001),tf.int8) ,axis=1 ), tf.int32)
+    
+    while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    
+    def body(i, logits_to_return):
+        #print('RUNNING THE TFS BODY CODE!!! ')
+        ids_above_tail = indices[i,:tail_ids[i]]
+        logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
+        logit = logits[i, :] + logit_mask
+        return [tf.add(i, 1),
+               tf.expand_dims(logit, axis=0) if logits_to_return is None else tf.concat([logits_to_return, tf.expand_dims(logit, axis=0)], axis=0) 
+        ]
+    
+    i = tf.constant(0, dtype=tf.int32)
+    _, logits_to_return = body(i, None)
+    i = tf.constant(1, dtype=tf.int32)
+    _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
+                                      tf.TensorShape([None, logits.shape[1].value])] )
+
+    return logits_to_return #returning the selected logits. the multinomial takes in logits not softmax. 
+
+
+def tail_free(logits, p):
+
+    sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
+    #indices = tf.argsort(logits, direction='DESCENDING', axis=1)
+    grad = sps[:,1:]-sps[:,:-1] # first derivative
+    grad = grad[:,1:]-grad[:,:-1] #this is the 2nd derivative
+
+    only_pos = tf.math.abs(grad)
+    sec_indices = tf.range(grad.shape[1].value)
+    sec_weights = only_pos/ tf.math.reduce_sum( only_pos, axis=1, keepdims=True )
+    
+    # do cum sum for the combo (seems to be more theoretically robust)
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(sec_weights, axis=1)>p, tf.int8), axis=1), tf.int32)+1 # adding one to put it in the center of the tail. But only for TFS 
+
+    logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
+    tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
+
+    return tf.where(
+            logits < tail_min_vals, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+
+    '''while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    def body(i, logits_to_return):
+        ids_above_tail = indices[i,:tail_ids[i]+1]
+        logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
+        logit = logits[i, :] + logit_mask
+        return [tf.add(i, 1),
+               tf.expand_dims(logit, axis=0) if logits_to_return is None else tf.concat([logits_to_return, tf.expand_dims(logit, axis=0)], axis=0) 
+        ]
+    
+    i = tf.constant(0, dtype=tf.int32)
+    _, logits_to_return = body(i, None)
+    i = tf.constant(1, dtype=tf.int32)
+    _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
+                                      tf.TensorShape([None, logits.shape[1].value])] )
+    
+    return logits_to_return'''
+
+def flat_perc(logits, p):
+    sps = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
+    indices = tf.argsort(logits, direction='DESCENDING', axis=1)
+    tail_ids=tf.cast(sps.shape[1].value- tf.argmax( tf.cast(tf.greater(tf.reverse(sps,axis=[1]), p),tf.int8) ,axis=1 ), tf.int32)
+
+    logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
+    tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
+
+    return tf.where(
+            logits < tail_min_vals, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+
+    '''while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    def body(i, logits_to_return):
+        ids_above_tail = indices[i,:tail_ids[i]+1]
+        logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
+        logit = logits[i, :] + logit_mask
+        return [tf.add(i, 1),
+               tf.expand_dims(logit, axis=0) if logits_to_return is None else tf.concat([logits_to_return, tf.expand_dims(logit, axis=0)], axis=0) 
+        ]
+    
+    i = tf.constant(0, dtype=tf.int32)
+    _, logits_to_return = body(i, None)
+    i = tf.constant(1, dtype=tf.int32)
+    _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
+                                      tf.TensorShape([None, logits.shape[1].value])] )
+    
+    return logits_to_return'''
+
+def nucleus(logits, p):
+    indices = tf.argsort(logits, direction='DESCENDING', axis=1)
+    vals = tf.sort(tf.nn.softmax(logits, axis=1), direction='DESCENDING',axis=1)
+    tail_ids = tf.cast(tf.argmax(tf.cast(tf.cumsum(vals, axis=1)>p, tf.int8), axis=1), tf.int32)
+
+    logit_inds = tf.stack([tf.range(0,logits.shape[0].value), tail_ids], axis=1)
+    tail_min_vals = tf.expand_dims(tf.gather_nd(logits, logit_inds),1)
+
+    return tf.where(
+            logits < tail_min_vals, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+
+    '''while_condition = lambda i, logits_to_return: tf.less(i, logits.shape[0].value)
+    def body(i, logits_to_return):
+        ids_above_tail = indices[i,:tail_ids[i]+1]
+        logit_mask = tf.sparse_to_dense( tf.sort(ids_above_tail, direction='ASCENDING',axis=0), [logits.shape[1].value,], 0.0, 1.0)*-1e10
+        logit = logits[i, :] + logit_mask
+        return [tf.add(i, 1),
+               tf.expand_dims(logit, axis=0) if logits_to_return is None else tf.concat([logits_to_return, tf.expand_dims(logit, axis=0)], axis=0) 
+        ]
+    
+    i = tf.constant(0, dtype=tf.int32)
+    _, logits_to_return = body(i, None)
+    i = tf.constant(1, dtype=tf.int32)
+    _, logits_to_return = tf.while_loop(while_condition, body, [i, logits_to_return], shape_invariants=[i.get_shape(), 
+                                      tf.TensorShape([None, logits.shape[1].value])] )
+    
+    return logits_to_return'''
+
+
+def top_k_logits(logits, k):
+    if k == 0:
+        # no truncation
+        return logits
+
+    def _top_k():
+        values, _ = tf.nn.top_k(logits, k=k) # quickly finds the top k out of the logits. returns values for the top K and then the indices. 
+        min_values = values[:, -1, tf.newaxis] # gets the minimum values from each of them. these are the lower bound. batch_size * 1. 
+        return tf.where(
+            logits < min_values, # if it is worse than this lower bound. I can do this for my ones too! does it for each batch simultaneously.
+            tf.ones_like(logits, dtype=logits.dtype) * -1e10,
+            logits,
+        )
+    return tf.cond(
+       tf.equal(k, 0),
+       lambda: logits,
+       lambda: _top_k(),
+    )
+
+
+def sample_sequence(*, hparams, length, start_token=None, batch_size=None, context=None, 
+sampler='k', temperature=1, top_k=0, alpha=0.05, nuc_prob=0.25, flat_prob=0.02,
+k_window_size=None, window_weights=None):
+    if start_token is None:
+        assert context is not None, 'Specify exactly one of start_token and context!' # this is where the whole context is already given into the model. 
+        # it is the primer that I write for it! 
+    else:
+        assert context is None, 'Specify exactly one of start_token and context!'
+        context = tf.fill([batch_size, 1], start_token) # this is not used in my case! 
+
+    def step(hparams, tokens, past=None):
+        lm_output = model.model(hparams=hparams, X=tokens, past=past, reuse=tf.AUTO_REUSE)
+
+        logits = lm_output['logits'][:, :, :hparams.n_vocab]
+        presents = lm_output['present']
+        presents.set_shape(model.past_shape(hparams=hparams, batch_size=batch_size))
+        return {
+            'logits': logits,
+            'presents': presents,
+        }
+
+    with tf.name_scope('sample_sequence'):
+
+        # this will store all of the logits for a specific sampling run. 
+        # ultimately I want this to be a:  samples * prompts (batch size) * words * length  sized matrix. 
+
+        #all_logits = tf.Variable(tf.zeros([batch_size, 50257, length]), dtype=tf.float32) 
+        #all_logits = tf.Variable(name='all_logits', shape=[batch_size, 50257, length], initializer= ,dtype=tf.float32, trainable=False) 
+
+        def body(past, prev, output, all_logits):
+            next_outputs = step(hparams, prev, past=past)
+
+            logits = next_outputs['logits'][:, -1, :]  / tf.to_float(temperature)
+            if sampler=='k':
+                print('using top k')
+                logits = top_k_logits(logits, k=top_k)
+            elif sampler=='n':
+                print('using nucleus')
+                logits = nucleus(logits, p=nuc_prob)
+            elif sampler=='tfs':
+                print('using tail free sampling')
+                logits = tail_free(logits, alpha) #, k_window_size, window_weights)
+            elif sampler=='flat':
+                print('using flat percentage sampling')
+                logits = flat_perc(logits, flat_prob)
+            else: 
+                print('defauling to top k sampling')
+                logits = top_k_logits(logits, k=top_k)
+            #print('the logits shape post processing is: ', logits.shape)
+            samples = tf.multinomial(logits, num_samples=1, output_dtype=tf.int32)
+            #print('the samples shape is: ', samples.shape)
+            return [
+                next_outputs['presents'] if past is None else tf.concat([past, next_outputs['presents']], axis=-2),
+                tf.reshape(samples,[batch_size,1]),
+                tf.concat([output, samples], axis=1),
+                tf.expand_dims(next_outputs['logits'][:, -1, :], axis=2) if all_logits is None else tf.concat([all_logits, tf.expand_dims(next_outputs['logits'][:, -1, :], axis=2)], axis=2)
+                #tf.concat([all_logits, tf.expand_dims(next_outputs['logits'][:, -1, :], axis=2)], axis=2)
+                #all_logits[:,:,tf.shape(output)[1]+1].assign(tf.expand_dims(next_outputs['logits'][:, -1, :], axis=2) )
+            ]
+
+        past, prev, output, all_logits = body(None, context, context, None) # for the first run the output and previous are both the context. 
+
+        def cond(*args):
+            return True
+
+        _, _, tokens, all_logits_out = tf.while_loop(
+                       cond=cond, body=body,
+            maximum_iterations=length - 1,
+            loop_vars=[
+                past,
+                prev,
+                output,
+                all_logits
+            ],
+            #changed the 2nd shape invariant so that it can handle the ? shape (which is actually batch size) for the TFS sampling. 
+            shape_invariants=[
+                tf.TensorShape(model.past_shape(hparams=hparams, batch_size=batch_size)),
+                tf.TensorShape([batch_size, None]),
+                tf.TensorShape([batch_size, None]),
+                tf.TensorShape([batch_size, 50257, None]) #batch size
+            ],
+            back_prop=False,
+        )
+
+
+        return (tokens, all_logits_out)

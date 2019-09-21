@@ -132,7 +132,6 @@ def interact_model( # some other variables are initialized below
             contexts_batch = [c[:shortest] for c in contexts_batch]'''
 
             contexts_batch = [c[:to_perp_length] for c in contexts_batch if len(c)>=to_perp_length]
-
             
             generated = 0
             for _ in range(nsamples // batch_size): 

@@ -2,24 +2,20 @@
 1 : Samp Type:tfs Param:0.95 
 
 =====================================================
-0 : Samp Type:tfs Param:0.95 
-1 : Samp Type:n Param:0.69 
+0 : Samp Type:n Param:0.69 
+1 : Samp Type:tfs Param:0.95 
+
+=====================================================
+0 : Samp Type:n Param:0.69 
+1 : Samp Type:tfs Param:0.95 
 
 =====================================================
 0 : Samp Type:tfs Param:0.95 
 1 : Samp Type:n Param:0.69 
 
 =====================================================
-0 : Samp Type:tfs Param:0.95 
-1 : Samp Type:n Param:0.69 
-
-=====================================================
-0 : Samp Type:tfs Param:0.95 
-1 : Samp Type:n Param:0.69 
-
-=====================================================
-0 : Samp Type:tfs Param:0.95 
-1 : Samp Type:n Param:0.69 
+0 : Samp Type:n Param:0.69 
+1 : Samp Type:tfs Param:0.95 
 
 =====================================================
 0 : Samp Type:n Param:0.69 
@@ -36,5 +32,9 @@
 =====================================================
 0 : Samp Type:n Param:0.69 
 1 : Samp Type:tfs Param:0.95 
+
+=====================================================
+0 : Samp Type:tfs Param:0.95 
+1 : Samp Type:n Param:0.69 
 
 =====================================================
