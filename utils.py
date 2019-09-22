@@ -3,6 +3,7 @@
 import numpy as np
 import enchant
 from decodeLogits import *
+import matplotlib.pyplot as plt
 
 def nucleus_calc(vals, thresh ):
     return np.argmax(np.cumsum(vals)>thresh)+1
@@ -41,3 +42,14 @@ def get_specific_positions(tokens, starting_pos, rel_pos):
     l = len(tokens)
     mid = l//2
     return ([tokens[0], tokens[mid] ,tokens[-1]],  [starting_pos+rel_pos[0], starting_pos+rel_pos[mid] ,starting_pos+rel_pos[-1]])
+
+def bar_plot_columns(df, title_app):
+    x_vals = range(df.shape[1])
+    plt.bar(x_vals, df.mean())
+    plt.title('Mean Replacability Score - '+title_app)
+    plt.xticks(x_vals, df.columns, rotation='vertical')
+    plt.show()
+    
+def abs_diff_of_different_locations(df):
+    for i in range(1, 4):
+        print('position:',i, '=',np.abs(df['tfs_0.95-'+str(i)].mean() - df['n_0.69-'+str(i)].mean()))
