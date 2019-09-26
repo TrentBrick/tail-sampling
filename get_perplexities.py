@@ -148,6 +148,7 @@ def interact_model( # some other variables are initialized below
                 print(tf.shape(batch_perps))
                 #adding to the list of all logits. 
                 all_perplexities.append(batch_perps[:,prompt_length:])
+                
                 all_logits.append(batch_logits[:,prompt_length:,:])
                 all_text.append(contexts_batch)
                 #print('see what the first out looks like! before decoding', out[0])

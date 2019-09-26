@@ -50,6 +50,6 @@ def bar_plot_columns(df, title_app):
     plt.xticks(x_vals, df.columns, rotation='vertical')
     plt.show()
     
-def abs_diff_of_different_locations(df):
+def abs_diff_of_different_locations(df, t_lab, n_lab):
     for i in range(1, 4):
-        print('position:',i, '=',np.abs(df['tfs_0.95-'+str(i)].mean() - df['n_0.69-'+str(i)].mean()))
+        print('position:',i, '=',np.abs(df[t_lab+'-'+str(i)].mean() - df[n_lab+'-'+str(i)].mean()))

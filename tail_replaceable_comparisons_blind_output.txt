@@ -1,80 +1,500 @@
 For each of the following assignments, rank on a scale of 1-5 how replaceable each word is, given the provided context. 
-===================================================== 
+Some words are stems, if the word could be completed then you can still rank it highly. And be generous with acronyms that could be plausible. ===================================================== 
  
 Prompt 0. 
 The 15 words in front: 
  
- Quite often they ’ d sung this term of worship to their sterile, _______
-1. shallow 2.  manufactured 3. expensive 4. Fig 5. white 6. face 7. hots 8. almost 9. indifferent 10. forget 
+ aged weapons. Everyone else was given or assigned different uses of technology. The _______
+1. interstitial 2. most 3.  infantry 4. only 5. nutrients 6. captain 7. name 8. workforce 9. last 10. humans 
  
 =====================================================
  
 Prompt 1. 
 The 15 words in front: 
  
-
- 
- From his right, he hears a snap, the sound echoing _______
-1. into 2. from 3. far 4. initialized 5. through 6. portal 7. over 8.  throughout 9. back 10. to 
+ never understood words too well, but I guess I had to suck it up _______
+1. because 2. drains 3. and 4. because 5. for 6. and 7. for 8. cumbers 9. as 10. ; 
  
 =====================================================
  
 Prompt 2. 
 The 15 words in front: 
  
- this only meant one thing. There would be no turkey that Thanksgiving. No _______
-1. speaking 2. pumpkin 3. one 4. Asset 5. other 6. big 7. Master 8. Mick 9. mist 10.  stuffing 
+ no longer individuals. Mothers are no longer people, merely backgrounds for jokes and _______
+1. a 2. jokes 3. impressions 4. inventions 5. image 6. Fitzgerald 7. conservancy 8.  occasional 9. pun 10. to 
  
 =====================================================
  
 Prompt 3. 
 The 15 words in front: 
  
- the case. 
- There was a long and complicated paper trail of the _______
-1. Ad 2. DON 3. activity 4. fact 5. work 6. Limit 7. FDA 8. risk 9.  drug 10. kind 
+
+ 
+ A child's broken plaything, risen with evil intent, _______
+1. mainland 2. and 3. with 4. sought 5. its 6. leaving 7. Interstitial 8. but 9.  c 10. turns 
  
 =====================================================
  
 Prompt 4. 
 The 15 words in front: 
  
- even imagine the hell I had to wade through just to get them to _______
-1. start 2. acknowledge 3. act 4. cumbers 5. Create 6. be 7.  not 8. obey 9. leave 10. buy 
+ would realize truly how powerful Anonymous was. 
+ 
+ Thanks to his _______
+1. father 2. creative 3. mask 4. fall 5. trusted 6. huge 7. success 8. newfound 9. Els 10.  friends 
  
 =====================================================
  
 Prompt 5. 
 The 15 words in front: 
  
-`` My name is 28w35, this is my home.'' Its upper _______
-1. hand 2. jaw 3. body 4.  body 5. right 6. torso 7. arms 8. left 9. abase 10. reinforces 
+i on a whim. I was sent to placate the locals and their _______
+1. usual 2. outraged 3. nearer 4. apter 5. loved 6. barely 7. anger 8. racist 9.  government 10. ha 
  
 =====================================================
  
 Prompt 6. 
 The 15 words in front: 
  
- no less immutable than chalk on a blackboard. 
- 
- A _______
-1. human 2. small 3. inter 4. few 5. room 6. strange 7. AIDS 8.  lot 9. private 10. matter 
+ particular evening of the third of April that he found that one of his usual _______
+1. amuse 2. team 3. patrons 4. Graves 5. clients 6. udder 7.  machines 8. customers 9. suspects 10. dinner 
  
 =====================================================
  
 Prompt 7. 
 The 15 words in front: 
  
-'ve kept his watch duty, but guess who got to sit at the polls _______
-1. today 2. to 3. , 4. pitches 5. and 6. anyway 7. the 8. that 9. this 10. cumbers 
+
+`` God, I was surprised you sent a son of yours down to _______
+1. these 2. hell 3. help 4.  earth 5. earth 6. Hell 7. this 8. Availability 9. geographical 10. this 
  
 =====================================================
  
 Prompt 8. 
 The 15 words in front: 
  
+ no less immutable than chalk on a blackboard. 
+ 
+ A _______
+1. page 2. Blend 3. time 4. few 5. fourth 6. little 7.  lot 8. short 9. reference 10. Charges 
+ 
+=====================================================
+ 
+Prompt 9. 
+The 15 words in front: 
+ 
+ her spirit with your cynical bullshit world and your Victorian-era expectations including your _______
+1. massive 2. conservancy 3. legal 4. Gaming 5.  stupid 6. own 7. daughter 8. mother 9. 20 10. wife 
+ 
+=====================================================
+ 
+Prompt 10. 
+The 15 words in front: 
+ 
+ can avoid the consequences of avoiding reality. 
+ 
+ 
+ And _______
+1. how 2. finally 3. one 4. with 5. while 6. take 7. cumbers 8. it 9. that 10.  that 
+ 
+=====================================================
+ 
+Prompt 11. 
+The 15 words in front: 
+ 
+ eyes out to. I could feel your absence, and it hurt. But _______
+1. at 2. cumbers 3. I 4. then 5. that 6. the 7. finite 8. you 9. I 10.  I 
+ 
+=====================================================
+ 
+Prompt 12. 
+The 15 words in front: 
+ 
+ bellowed throughout the tunnel. This was definitely it. This wasn ’ _______
+1. pr 2. it 3. the 4. number 5. something 6. Cosponsors 7.  t 8. your 9. 1971 10. a 
+ 
+=====================================================
+ 
+Prompt 13. 
+The 15 words in front: 
+ 
+ to a surely faulty alarm clock, John had scrambled to the meeting with the _______
+1. word 2. assistants 3.  man 4. writer 5. staking 6. train 7. aid 8. doctor 9. wife 10. soaked 
+ 
+=====================================================
+ 
+Prompt 14. 
+The 15 words in front: 
+ 
+ it rained down around the scarred monster. 
+ 
+ A _______
+1. Availability 2. victim 3. tall 4. boy 5. monster 6. row 7. accountant 8. tomb 9. man 10.  dark 
+ 
+=====================================================
+ 
+Prompt 15. 
+The 15 words in front: 
+ 
+ He looks bumbling and foolish in juxtaposition; mouth agape with the _______
+1. Kurds 2. noise 3. barely 4. realization 5. words 6. smell 7. Marginal 8. obvious 9.  occasional 10. stupidity 
+ 
+=====================================================
+ 
+Prompt 16. 
+The 15 words in front: 
+ 
+ of hers somehow brings a sense of familiarity that is familial, not that his _______
+1. Role 2. family 3. Cosponsors 4. own 5. wife 6. shy 7. mother 8. childish 9. fair 10.  mother 
+ 
+=====================================================
+ 
+Prompt 17. 
+The 15 words in front: 
+ 
+iss. After a failing to wake up in the morning due to a surely _______
+1. that 2. Cosponsors 3. not 4. hostile 5.  faulty 6. painful 7. ever 8. inc 9. ouch 10. fatal 
+ 
+=====================================================
+ 
+Prompt 18. 
+The 15 words in front: 
+ 
+ I was not prepared for this cold reception. Seriously, if your wife of _______
+1. over 2. cumbers 3. 35 4. sheet 5. 50 6. twenty 7. fourteen 8. 37 9. four 10.  3 
+ 
+=====================================================
+ 
+Prompt 19. 
+The 15 words in front: 
+ 
+ rats have wandered through 
+ he must smell 
+ of old socks and _______
+1. purple 2. old 3. hair 4. socks 5. half 6. broom 7. represented 8.  dust 9. bread 10. Dispatch 
+ 
+=====================================================
+ 
+Prompt 20. 
+The 15 words in front: 
+ 
  sidewalks, you know, in between the wars and money-making ventures and _______
-1. blow 2. what 3. the 4. everything 5. benefits 6. Tunnel 7. matter 8.  things 9. shit 10. greedy 
+1. corporate 2.  things 3. signatures 4. Cosponsors 5. other 6. bombs 7. wind 8. stuff 9. the 10. lavish 
+ 
+=====================================================
+ 
+Prompt 21. 
+The 15 words in front: 
+ 
+ It allowed him to strive for more in life. In the meantime, the _______
+1. Editors 2. other 3. rain 4.  view 5. self 6. Introduced 7. voice 8. rest 9. hair 10. day 
+ 
+=====================================================
+ 
+Prompt 22. 
+The 15 words in front: 
+ 
+ Forty percent for selling a book is nothing to scoff at. Hell, I _______
+1. could 2. have 3. made 4.  would 5. cumbers 6. had 7. paid 8. think 9. might 10. renowned 
+ 
+=====================================================
+ 
+Prompt 23. 
+The 15 words in front: 
+ 
+. They had now resorted to using centuries old machines and weapons. Only the _______
+1. military 2.  army 3. skeleton 4. SPONSORED 5. Yellowstone 6. smallest 7. most 8. ones 9. seemingly 10. bullets 
+ 
+=====================================================
+ 
+Prompt 24. 
+The 15 words in front: 
+ 
+
+ Despite my unforgiving determination, my relentless persuasion, and even a few _______
+1. desperate 2. of 3. munition 4. gr 5. selfish 6. permanently 7.  threats 8. plot 9. other 10. pitches 
+ 
+=====================================================
+ 
+Prompt 25. 
+The 15 words in front: 
+ 
+ 
+ is done to all. Dirt? Fuck Dirt. 
+ Her _______
+1. clay 2. captures 3. name 4. FORMATION 5. life 6. eyes 7. Street 8.  hair 9. rock 10. words 
+ 
+=====================================================
+ 
+Prompt 26. 
+The 15 words in front: 
+ 
+ to step on a crack. 
+ 
+ It's nice that the _______
+1. very 2. women 3.  government 4. cumbers 5. curse 6. game 7. master 8. 1968 9. troll 10. writers 
+ 
+=====================================================
+ 
+Prompt 27. 
+The 15 words in front: 
+ 
+ later until I realized why something did n't feel right. That was my _______
+1. previous 2. friend 3. cumbers 4. eye 5. current 6. bag 7. Sever 8. first 9. pen 10.  Dad 
+ 
+=====================================================
+ 
+Prompt 28. 
+The 15 words in front: 
+ 
+ VERY OWN ENGLISH!!!!! 
+ 
+`` Yuo fricken _______
+1. SPONSORED 2. your 3. ac 4. mice 5.  look 6. me 7. mammals 8. mouse 9. you 10. focuses 
+ 
+=====================================================
+ 
+Prompt 29. 
+The 15 words in front: 
+ 
+ front of Feruld, its feelers grazing lightly across the glass. The _______
+1. focus 2. Weir 3. Avg 4. creature 5. dust 6.  ventilation 7. table 8. young 9. eyes 10. world 
+ 
+=====================================================
+ 
+Prompt 30. 
+The 15 words in front: 
+ 
+ it ’ s nothing more than feigned modesty—an expression of the _______
+1. most 2.  pride 3. cavalry 4. mystic 5. munition 6. prim 7. breath 8. idea 9. fact 10. deep 
+ 
+=====================================================
+ 
+Prompt 31. 
+The 15 words in front: 
+ 
+ Germany, me talking about Köln where I grew up and it's _______
+1. 134 2. there 3. WARE 4. still 5. first 6.  wonderful 7. snow 8. population 9. amazing 10. history 
+ 
+=====================================================
+ 
+Prompt 32. 
+The 15 words in front: 
+ 
+ of my so-called “fails ”. From all the _______
+1.  data 2. feedback 3. smart 4. years 5. Google 6. risen 7. work 8. sentences 9. POSE 10. time 
+ 
+=====================================================
+ 
+Prompt 33. 
+The 15 words in front: 
+ 
+
+ 
+ Nestled in the corner of the observation room, a large _______
+1.  cluster 2. Once 3. Avg 4. black 5. box 6. rack 7. computer 8. white 9. basket 10. marble 
+ 
+=====================================================
+ 
+Prompt 34. 
+The 15 words in front: 
+ 
+ people are aware of the extent of the dark net research cluster that created the _______
+1. most 2. ill 3.  drug 4. drug 5. yip 6. problem 7. Twice 8. picture 9. hype 10. first 
+ 
+=====================================================
+ 
+Prompt 35. 
+The 15 words in front: 
+ 
+Hey, Jonathan, I'm glad you could make it, ''his writer _______
+1. interrupted 2. Sky 3. read 4. was 5. repeated 6. replied 7. st 8.  said 9. Roaming 10. explained 
+ 
+=====================================================
+ 
+Prompt 36. 
+The 15 words in front: 
+ 
+. He sat with one leg over the other gazing out the window at the _______
+1. town 2. newly 3. city 4. breeze 5. Interstitial 6. deserted 7.  city 8. lush 9. morning 10. Claude 
+ 
+=====================================================
+ 
+Prompt 37. 
+The 15 words in front: 
+ 
+ actually be challenged!``, Tom in shock replied ``Maybe we should go _______
+1. look 2.  out 3. to 4. down 5. ask 6. into 7. home 8. in 9. aged 10. ACTED 
+ 
+=====================================================
+ 
+Prompt 38. 
+The 15 words in front: 
+ 
+ couldn't- ''
+`` Just run!'' Sherry yells, grabbing _______
+1. at 2. him 3. cumbers 4. Brian 5. James 6. onto 7.  Brian 8. 640 9. the 10. his 
+ 
+=====================================================
+ 
+Prompt 39. 
+The 15 words in front: 
+ 
+ to bring order to this chaos. 
+ 
+ 
+`` The _______
+1. doll 2. warehouse 3. small 4. SPONSORED 5. next 6.  big 7. hard 8. conspicuous 9. figures 10. floor 
+ 
+=====================================================
+ 
+Prompt 40. 
+The 15 words in front: 
+ 
+ through the living pumpkins and black cats that are also in abundance. The _______
+1. new 2. newer 3. maxwell 4. construction 5. fact 6.  newly 7. girls 8. Gamer 9. bright 10. only 
+ 
+=====================================================
+ 
+Prompt 41. 
+The 15 words in front: 
+ 
+ the one who *just* said we couldn't- ''
+`` Just _______
+1. me 2. psych 3. ignore 4. think 5. cumbers 6. what 7. go 8. why 9. not 10.  run 
+ 
+=====================================================
+ 
+Prompt 42. 
+The 15 words in front: 
+ 
+. Now this curse, by or from whom no one knows, has made _______
+1. these 2. parents 3. this 4. every 5. cumbers 6. bombings 7. the 8. my 9. their 10.  mothers 
+ 
+=====================================================
+ 
+Prompt 43. 
+The 15 words in front: 
+ 
+ying her in the corner, he waved her over. ``Miss, how _______
+1.  did 2. many 3. SPONSORED 4. come 5. complexity 6. could 7. is 8. are 9. was 10. long 
+ 
+=====================================================
+ 
+Prompt 44. 
+The 15 words in front: 
+ 
+ that was the case. 
+ There was a long and complicated paper trail _______
+1. before 2. that 3. on 4. between 5. Strike 6. for 7. cumbers 8. I 9.  of 10. leading 
+ 
+=====================================================
+ 
+Prompt 45. 
+The 15 words in front: 
+ 
+ how much use I could get out of the bottle opener if I was a _______
+1. Iowa 2. Oriental 3. good 4.  bit 5. bit 6. hand 7. little 8. giant 9. regular 10. first 
+ 
+=====================================================
+ 
+Prompt 46. 
+The 15 words in front: 
+ 
+ from its stand and laid it on the ground, tugging at the corners _______
+1. STD 2. in 3. until 4. biography 5. with 6.  and 7. and 8. to 9. of 10. as 
+ 
+=====================================================
+ 
+Prompt 47. 
+The 15 words in front: 
+ 
+ something about the state of the roads and sidewalks, you know, in between _______
+1. the 2. cumbers 3. homes 4. situations 5. arrives 6. all 7. when 8.  the 9. a 10. morning 
+ 
+=====================================================
+ 
+Prompt 48. 
+The 15 words in front: 
+ 
+ your palace for, like, 10 minutes ''. 
+ I murmured _______
+1.  under 2. into 3. out 4. nets 5. that 6. my 7. with 8. TEXTURE 9. it 10. to 
+ 
+=====================================================
+ 
+Prompt 49. 
+The 15 words in front: 
+ 
+ A dashing young man of 25, fatally endowed with a lack of a _______
+1.  sense 2. brain 3. soul 4. lung 5. moral 6. brother 7. Perl 8. heart 9. SPONSORED 10. penis 
+ 
+=====================================================
+ 
+Prompt 50. 
+The 15 words in front: 
+ 
+ 
+ What no one likes to talk about is that the book ’ _______
+1. great 2. supposed 3. conservancy 4. which 5.  s 6. The 7. and 8. it 9. came 10. hungry 
+ 
+=====================================================
+ 
+Prompt 51. 
+The 15 words in front: 
+ 
+ It feels like I've been set up to make that connection. The endless _______
+1. lines 2. pan 3. search 4. destruction 5. stream 6. loops 7. respected 8.  documentaries 9. ruled 10. explosion 
+ 
+=====================================================
+ 
+Prompt 52. 
+The 15 words in front: 
+ 
+ would remember it then either, so i decided to write it down. I _______
+1. am 2. took 3. cumbers 4.  had 5. made 6. guess 7. 509 8. was 9. wanted 10. tried 
+ 
+=====================================================
+ 
+Prompt 53. 
+The 15 words in front: 
+ 
+ And, I do n't know what to expect when we arrive. The _______
+1. inter 2. physical 3. shields 4. Turkey 5. ship 6. announcement 7. Inter 8.  Void 9. chronically 10. last 
+ 
+=====================================================
+ 
+Prompt 54. 
+The 15 words in front: 
+ 
+OOOrty ''I chuckled to myself. 
+ 
+ As the _______
+1. beam 2. Hook 3. purple 4.  beam 5. stall 6. Stretch 7. last 8. members 9. bar 10. sun 
+ 
+=====================================================
+ 
+Prompt 55. 
+The 15 words in front: 
+ 
+cing about the farm he grew up on, in Bavaria. How we _______
+1. were 2. used 3. first 4. have 5. always 6. cumbers 7.  played 8. knew 9. never 10. pasture 
+ 
+=====================================================
+ 
+Prompt 56. 
+The 15 words in front: 
+ 
+igned modesty—an expression of the pride they feel for every day that their _______
+1. militias 2. medical 3.  surgeries 4. work 5. computers 6. lives 7. darling 8. conservancy 9. product 10. wards 
+ 
+=====================================================
+ 
+Prompt 57. 
+The 15 words in front: 
+ 
+ across the glass. The ventilation system whirred to life, and the _______
+1. air 2. door 3. Dull 4. engine 5. standing 6. glass 7. creature 8. Avg 9. curtain 10.  m 
  
 =====================================================
  
