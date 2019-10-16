@@ -5,7 +5,7 @@ Prompt 0.
 The 15 words in front: 
  
  change something, might be the one trigger that set off some catastrophic chain of _______
-1.  events 2. things 3. events 4. bad 5. Population 6. circumstances 7. event 
+1. event 2. things 3. bad 4.  events 5. circumstances 6. events 7. Population 
  
 =====================================================
  
@@ -13,7 +13,7 @@ Prompt 1.
 The 15 words in front: 
  
  the world ’ s leading pharmaceutical companies had to stay hidden. Shareholders _______
-1. would 2.  would 3. had 4. iterator 5. are 6. were 7. could 
+1. iterator 2.  would 3. would 4. are 5. could 6. had 7. were 
  
 =====================================================
  
@@ -21,7 +21,7 @@ Prompt 2.
 The 15 words in front: 
  
  off guard. While your body lay half on the counter with legs over the _______
-1. side 2. counter 3. Plot 4.  edge 5. sink 6. edge 7. table 
+1. sink 2. table 3. Plot 4. counter 5. edge 6. side 7.  edge 
  
 =====================================================
  
@@ -29,7 +29,7 @@ Prompt 3.
 The 15 words in front: 
  
  I'm getting rrREAdy''. My murmur had ended with _______
-1. an 2. me 3. the 4. my 5. conservancy 6.  a 7. a 
+1. a 2. the 3. me 4.  a 5. conservancy 6. an 7. my 
  
 =====================================================
  
@@ -37,7 +37,7 @@ Prompt 4.
 The 15 words in front: 
  
  crunched underneath and the ground bubbled with his steps. The black _______
-1. oak 2. and 3. sky 4. Eat 5. sand 6.  creek 7. of 
+1. and 2. sky 3. of 4.  creek 5. oak 6. Eat 7. sand 
  
 =====================================================
  
@@ -45,7 +45,7 @@ Prompt 5.
 The 15 words in front: 
  
 lady because the ugly mug of hers somehow brings a sense of familiarity that _______
-1.  is 2. the 3. is 4. prototype 5. makes 6. she 7. he 
+1. the 2. is 3. prototype 4. makes 5. she 6.  is 7. he 
  
 =====================================================
  
@@ -55,7 +55,7 @@ The 15 words in front:
  before it can even be started. 
  
  Nevertheless, this quite _______
-1.  adept 2. simply 3. simple 4. young 5. deliberate 6. a 7. 7601 
+1. 7601 2.  adept 3. simple 4. a 5. deliberate 6. young 7. simply 
  
 =====================================================
  
@@ -63,7 +63,7 @@ Prompt 7.
 The 15 words in front: 
  
  voice. ``I wish I could actually be challenged!``, Tom in _______
-1. an 2. the 3.  shock 4. a 5. cumbers 6. his 7. thought 
+1. the 2. cumbers 3. a 4. an 5.  shock 6. his 7. thought 
  
 =====================================================
  
@@ -71,7 +71,7 @@ Prompt 8.
 The 15 words in front: 
  
  you off guard. While your body lay half on the counter with legs over _______
-1. his 2. it 3. ODE 4.  the 5. one 6. the 7. your 
+1. it 2. his 3. the 4.  the 5. ODE 6. your 7. one 
  
 =====================================================
  
@@ -79,7 +79,7 @@ Prompt 9.
 The 15 words in front: 
  
  their data analysis, their legislation and litigation, their software engineering, even their _______
-1. social 2. medical 3.  novel 4. research 5. design 6. political 7. winner 
+1. medical 2.  novel 3. political 4. social 5. winner 6. design 7. research 
  
 =====================================================
  
@@ -87,7 +87,7 @@ Prompt 10.
 The 15 words in front: 
  
 , I fully use the power of organization and am currently one of the best _______
-1. at 2.  secretaries 3. rush 4. organized 5. people 6. organizers 7. in 
+1. in 2. organizers 3. rush 4. at 5. people 6. organized 7.  secretaries 
  
 =====================================================
  
@@ -95,7 +95,7 @@ Prompt 11.
 The 15 words in front: 
  
  to use modern aged weapons. Everyone else was given or assigned different uses of _______
-1. their 2. Sexual 3.  technology 4. these 5. weapons 6. the 7. weaponry 
+1. the 2.  technology 3. their 4. Sexual 5. these 6. weaponry 7. weapons 
  
 =====================================================
  
@@ -103,7 +103,7 @@ Prompt 12.
 The 15 words in front: 
  
  dude, that was hell you just came from. (I told Michael the _______
-1. whole 2. same 3. truth 4. other 5. story 6. cumbers 7.  Jews 
+1. other 2. story 3.  Jews 4. same 5. whole 6. cumbers 7. truth 
  
 =====================================================
  
@@ -111,7 +111,7 @@ Prompt 13.
 The 15 words in front: 
  
 , despite both parties equally capable of feeling emotion, and this one knows his _______
-1.  trade 2. partner 3. Reviewed 4. place 5. chances 6. value 7. own 
+1.  trade 2. partner 3. value 4. place 5. own 6. chances 7. Reviewed 
  
 =====================================================
  
@@ -121,7 +121,7 @@ The 15 words in front:
 . Just count the stars, right? * 
  
  He eased _______
-1. his 2. himself 3.  his 4. the 5. CAST 6. out 7. back 
+1. CAST 2. his 3. back 4.  his 5. out 6. the 7. himself 
  
 =====================================================
  
@@ -129,7 +129,7 @@ Prompt 15.
 The 15 words in front: 
  
 . Thoughts of her always danced in the back of his mind. It made _______
-1.  his 2. Export 3. her 4. him 5. his 6. the 7. it 
+1. the 2. it 3. her 4.  his 5. Export 6. his 7. him 
  
 =====================================================
  
@@ -138,7 +138,7 @@ The 15 words in front:
  
  
  He had forgotten so much of this day. He had always been _______
-1. able 2. Tokens 3. so 4.  told 5. the 6. too 7. a 
+1.  told 2. a 3. Tokens 4. too 5. the 6. able 7. so 
  
 =====================================================
  
@@ -146,7 +146,7 @@ Prompt 17.
 The 15 words in front: 
  
 . One of the most satisfying moments for him was watching her sleep with a _______
-1. DEM 2. smile 3.  smile 4. new 5. man 6. pillow 7. lover 
+1.  smile 2. lover 3. man 4. smile 5. pillow 6. new 7. DEM 
  
 =====================================================
  
@@ -156,7 +156,7 @@ The 15 words in front:
  expecting it. ” 
  
 “ So are you saying _______
-1.  we 2. money 3. I 4. we 5. that 6. the 7. Sax 
+1. the 2. that 3.  we 4. we 5. I 6. money 7. Sax 
  
 =====================================================
  
