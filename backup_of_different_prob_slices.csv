@@ -1,0 +1,27 @@
+,prompt_ind,time_point,batch_ind,ind_in_batch,leading_words,ground_word,ground_word_prob,words,abs_inds,probs
+0,19,28,0,19," change something, might be the one trigger that set off some catastrophic chain of", events,4.1035644926523673e-07,['events' 'event' 'things' 'circumstances' 'bad' 'Population'],"[0, 1, 2, 3, 4, 50158]","[0.9782679, 0.0021306623, 0.00077810284, 0.0005090322, 0.00049161154, 7.025028e-13]"
+1,72,100,3,2, the world ’ s leading pharmaceutical companies had to stay hidden. Shareholders, would,5.5134936701506376e-05,['were' 'had' 'would' 'could' 'are' 'iterator'],"[0, 3, 5, 6, 7, 50140]","[0.123787306, 0.09488712, 0.04294153, 0.03562189, 0.017869446, 1.572654e-11]"
+2,31,29,1,8, off guard. While your body lay half on the counter with legs over the, edge,1.6220442375924904e-06,['edge' 'counter' 'sink' 'side' 'table' 'Plot'],"[0, 1, 2, 3, 4, 50130]","[0.27985963, 0.1617055, 0.08516163, 0.06683456, 0.032138694, 1.6408815e-11]"
+3,56,73,2,10, I'm getting rrREAdy''. My murmur had ended with, a,5.716932355426252e-05,['a' 'the' 'my' 'an' 'me' 'conservancy'],"[0, 1, 2, 3, 4, 50140]","[0.41619945, 0.17138307, 0.11777301, 0.05513218, 0.04402787, 2.3627343e-11]"
+4,24,60,1,1, crunched underneath and the ground bubbled with his steps. The black, creek,2.1538962613476542e-08,['and' 'of' 'oak' 'sand' 'sky' 'Eat'],"[4, 5, 6, 7, 8, 50156]","[0.023683885, 0.013982991, 0.011684752, 0.011330608, 0.010126767, 6.070241e-11]"
+5,13,64,0,13,lady because the ugly mug of hers somehow brings a sense of familiarity that, is,0.00020496858633123338,['he' 'is' 'makes' 'she' 'the' 'prototype'],"[0, 1, 2, 3, 4, 50158]","[0.22781697, 0.077138565, 0.047752414, 0.044151615, 0.029731499, 4.2622645e-11]"
+6,42,108,1,19," before it can even be started. 
+ 
+ Nevertheless, this quite", adept,1.2604008503558362e-08,['simple' 'a' 'young' 'deliberate' 'simply' '7601'],"[0, 2, 4, 7, 15, 50152]","[0.042511407, 0.031731628, 0.023607282, 0.014849837, 0.00842709, 1.5810905e-11]"
+7,62,53,2,16," voice. ``I wish I could actually be challenged!``, Tom in", shock,2.355513743168558e-06,['his' 'a' 'the' 'thought' 'an' 'cumbers'],"[0, 1, 2, 3, 4, 50158]","[0.25678304, 0.12715816, 0.051833175, 0.038946297, 0.035360236, 2.3367135e-11]"
+8,31,28,1,8, you off guard. While your body lay half on the counter with legs over, the,3.8483194657601416e-05,['your' 'the' 'his' 'it' 'one' 'ODE'],"[0, 1, 2, 3, 4, 50133]","[0.3757138, 0.36019436, 0.05797093, 0.05231691, 0.012323369, 1.6152503e-12]"
+9,39,46,1,16," their data analysis, their legislation and litigation, their software engineering, even their", novel,1.56093665282242e-05,['social' 'political' 'medical' 'research' 'design' 'winner'],"[0, 2, 3, 9, 31, 50154]","[0.018451318, 0.014097815, 0.010854172, 0.0073663783, 0.0036812543, 1.1857579e-10]"
+10,53,100,2,7,", I fully use the power of organization and am currently one of the best", secretaries,2.16605164360395e-10,['organized' 'at' 'in' 'people' 'organizers' 'rush'],"[0, 1, 2, 3, 4, 50161]","[0.2333325, 0.13031088, 0.054542486, 0.048035897, 0.018733913, 7.324437e-12]"
+11,33,114,1,10, to use modern aged weapons. Everyone else was given or assigned different uses of, technology,3.7967895423207665e-06,['the' 'weapons' 'these' 'their' 'weaponry' 'Sexual'],"[0, 1, 2, 3, 4, 50155]","[0.20355582, 0.13363923, 0.09389567, 0.060859017, 0.04151911, 1.8275145e-11]"
+12,48,24,2,2," dude, that was hell you just came from. (I told Michael the", Jews,2.5805034056247678e-06,['same' 'story' 'truth' 'other' 'whole' 'cumbers'],"[0, 1, 2, 3, 4, 50160]","[0.36536276, 0.11716203, 0.0867854, 0.053992763, 0.019656934, 1.628404e-11]"
+13,42,45,1,19,", despite both parties equally capable of feeling emotion, and this one knows his", trade,1.0153305993299e-05,['own' 'place' 'partner' 'value' 'chances' 'Reviewed'],"[0, 1, 4, 6, 12, 50161]","[0.062766224, 0.05227108, 0.03699395, 0.019175606, 0.011011624, 1.1390882e-11]"
+14,19,2,0,19,". Just count the stars, right? * 
+ 
+ He eased", his,5.129267265147064e-06,['his' 'himself' 'the' 'out' 'back' 'CAST'],"[0, 1, 2, 3, 4, 50122]","[0.5349603, 0.10094124, 0.09639756, 0.053815514, 0.045332637, 3.5308043e-12]"
+15,23,91,1,0,. Thoughts of her always danced in the back of his mind. It made, his,9.561581464367919e-06,['him' 'his' 'it' 'the' 'her' 'Export'],"[0, 1, 2, 3, 4, 50156]","[0.72515, 0.12334786, 0.029390175, 0.028482404, 0.01833724, 1.5443223e-12]"
+16,17,144,0,17," 
+ He had forgotten so much of this day. He had always been", told,2.7442727514426224e-05,['so' 'a' 'the' 'too' 'able' 'Tokens'],"[0, 1, 2, 3, 4, 50140]","[0.15548737, 0.11381613, 0.07520269, 0.040511202, 0.022882435, 5.8957205e-12]"
+17,23,42,1,0,. One of the most satisfying moments for him was watching her sleep with a, smile,2.294330897711916e-06,['man' 'new' 'smile' 'pillow' 'lover' 'DEM'],"[0, 1, 2, 3, 4, 50160]","[0.103217594, 0.033361733, 0.02416081, 0.014958636, 0.014876712, 8.427578e-12]"
+18,7,117,0,7," expecting it. ” 
+ 
+“ So are you saying", we,2.269794094900135e-05,['that' 'money' 'the' 'I' 'we' 'Sax'],"[0, 1, 2, 4, 5, 50146]","[0.66799676, 0.042522475, 0.03396498, 0.021786565, 0.02174337, 6.1745036e-12]"

@@ -17,14 +17,16 @@ def new_tfs(second, thresh):
 def flat(sps, p):
     return sps.shape[0]-np.argmax(np.flip(sps)>p)+1
 
-def remove_non_words(tokens):
+def remove_non_words(tokens, wantPrint=False):
 
     real_words = []
-    relative_positions = []
+    abs_positions = []
     d = enchant.Dict("en_US")
     for ind, t in enumerate(tokens): 
         t = decoder_text([t])
         t = t.strip()
+        if wantPrint:
+            print(t)
         if t == '':
             continue
         if len(t)==1:
@@ -33,8 +35,44 @@ def remove_non_words(tokens):
                 continue
         if d.check(t):
             real_words.append(t)
-            relative_positions.append(ind)
-    return [real_words, relative_positions]
+            abs_positions.append(ind)
+    return [real_words, abs_positions]
+    
+def get_specific_positions_from_probs(real_word_probs, prob_slices_wanted, rand_range=2):
+    word_inds = []
+    sel_word_probs = []
+    for ind, p in enumerate(prob_slices_wanted): 
+        
+        nearest_val, p_nearest_ind = find_nearest(real_word_probs, p)
+        
+        real_word_probs_clone = np.array(real_word_probs)
+        
+        while p_nearest_ind in word_inds: 
+            #need to search for something that is closer. 
+            real_word_probs_clone[p_nearest_ind] = 100000000 
+            nearest_val, p_nearest_ind = find_nearest(real_word_probs_clone, p)
+            #print(p_nearest_ind)
+            
+        #print(p_nearest_ind)
+        
+        if p_nearest_ind+rand_range > len(real_word_probs):
+            # it will find the very last value so sample only 5 ahead for this one. 
+            sel_word_ind = np.random.choice( np.arange(p_nearest_ind-(2*rand_range), p_nearest_ind) ,1)[0]
+            word_inds.append(sel_word_ind)
+            sel_word_probs.append(real_word_probs[sel_word_ind])
+            
+        else: 
+            word_inds.append(p_nearest_ind)
+            sel_word_probs.append(nearest_val)
+            
+    return word_inds, sel_word_probs
+    
+    
+def find_nearest(array, value):
+    # taken from https://stackoverflow.com/questions/2566412/find-nearest-value-in-numpy-array 
+    # returns the actual number and the index. 
+    idx = (np.abs(array - value)).argmin()
+    return array[idx], idx
     
 def get_specific_positions(tokens, starting_pos, rel_pos):
     if len(tokens)< 3:
@@ -50,6 +88,6 @@ def bar_plot_columns(df, title_app):
     plt.xticks(x_vals, df.columns, rotation='vertical')
     plt.show()
     
-def abs_diff_of_different_locations(df):
+def abs_diff_of_different_locations(df, t_lab, n_lab):
     for i in range(1, 4):
-        print('position:',i, '=',np.abs(df['tfs_0.95-'+str(i)].mean() - df['n_0.69-'+str(i)].mean()))
+        print('position:',i, '=',np.abs(df[t_lab+'-'+str(i)].mean() - df[n_lab+'-'+str(i)].mean()))
