@@ -1,0 +1,33 @@
+,prompt_ind,time_point,batch_ind,ind_in_batch,leading_words,ground_word,ground_word_prob,words,abs_inds,probs
+0,87,130,3,17," about your Master, Jamie, Mickeymouse?'' Lewis asked. he chose", his,2.8426269636838697e-05,['to' 'not' 'the' 'his' 'a' 'abase'],"[0, 1, 2, 3, 4, 50143]","[0.3743754, 0.15168922, 0.114058, 0.1101153, 0.05774547, 1.9319824e-11]"
+1,12,31,0,12, wronged him all the while overpaying for all the best things the world, has,4.175003141426714e-06,['has' 'had' 'could' 'can' 'have' 'redo'],"[0, 1, 2, 3, 4, 50161]","[0.8046437, 0.11674176, 0.021794733, 0.014255353, 0.0040541016, 1.7045862e-13]"
+2,8,139,0,8," 
+ 
+ I was not always this way, just a few months", ago,3.860928075027914e-07,['ago' 'back' 'before' 'earlier' 'after' 'NEWS'],"[0, 1, 2, 3, 4, 50146]","[0.75072527, 0.062387686, 0.059106637, 0.033737194, 0.025289252, 3.7627826e-12]"
+3,1,41,0,1,"
+ 
+ 
+ Oh no, my eyes may be closed but I", know,8.204139703593682e-06,['can' 'am' 'still' 'have' 'feel' 'Occupations'],"[0, 2, 3, 4, 5, 50125]","[0.20402168, 0.14912899, 0.08578479, 0.05179041, 0.027592616, 3.7850825e-12]"
+4,78,139,3,8," all over Rome, and i get to fish it out of the bottom of", the,4.6645560360047966e-05,['a' 'the' 'my' 'an' 'some' 'advertisement'],"[0, 1, 2, 3, 4, 50138]","[0.44043052, 0.32146803, 0.08462332, 0.036923353, 0.014871776, 1.1186661e-11]"
+5,60,106,2,14,". 
+ 
+ It was half past midnight, so the fields outside", our,1.338727815891616e-05,['were' 'the' 'had' 'of' 'our' 'Adds'],"[0, 1, 2, 3, 4, 50154]","[0.38491347, 0.22930746, 0.09021001, 0.083911546, 0.039299157, 2.1516458e-12]"
+6,70,60,3,0," and respect 
+ that what is done to Earth 
+ is done to", all,1.7136801034212112e-05,['you' 'Dirt' 'all' 'Earth' 'everyone' 'hawks'],"[0, 1, 2, 3, 4, 50140]","[0.27530676, 0.25284997, 0.11724809, 0.05485898, 0.03810996, 6.2422125e-12]"
+7,28,132,1,5, I am very cautious about talk of a single faith. We tried that on, Earth,7.409539648506325e-06,['the' 'our' 'Earth' 'a' 'Mars' 'oiler'],"[0, 1, 2, 3, 4, 50137]","[0.32149562, 0.10103543, 0.07376727, 0.04393134, 0.02474849, 3.918203e-11]"
+8,26,91,1,3," table I was sitting at, setting up a whole platter of it just", for,1.5492458260268904e-05,['for' 'so' 'to' 'in' 'a' 'avid'],"[0, 1, 2, 3, 4, 50122]","[0.6070613, 0.0768423, 0.0664531, 0.03440844, 0.020635761, 2.2938164e-12]"
+9,4,6,0,4,", Bjørn Bjørnson, was actually Norwegian. Though I", suppose,1.5200313896457374e-07,['can' 'have' 'do' 'could' 'think' 'Products'],"[0, 1, 2, 8, 14, 50146]","[0.07606108, 0.056419905, 0.046085972, 0.030698968, 0.01621507, 3.432019e-11]"
+10,12,107,0,12,"antes. 
+ 
+ 
+ The fact of the matter is that", people,7.613070192746818e-05,['the' 'there' 'this' 'it' 'in' 'ILA'],"[0, 1, 2, 3, 4, 50140]","[0.17950313, 0.042892415, 0.03677039, 0.02908443, 0.025457561, 6.037367e-11]"
+11,67,147,2,21," slowly around in a circle with it's arms stretched out, while the lower", half,2.570992137407302e-06,['body' 'half' 'one' 'part' 'torso' 'rue'],"[0, 1, 2, 3, 4, 50147]","[0.7409587, 0.05205488, 0.047519207, 0.035090867, 0.011666124, 3.8580584e-12]"
+12,57,101,2,11,". I see him dropping empty bottles. 
+ 
+ My dad opened", up,9.935135494743008e-06,['the' 'up' 'his' 'a' 'this' 'yip'],"[0, 1, 2, 3, 5, 50141]","[0.2931285, 0.2094082, 0.138198, 0.12856188, 0.020012029, 7.2489146e-12]"
+13,65,110,2,19, do what was necessary and bring the commander back dead or alive. That their, emotions,1.1906942063433235e-06,['commander' 'leader' 'mission' 'commanders' 'actions' 'Sport'],"[0, 1, 3, 4, 5, 50130]","[0.22419132, 0.06905108, 0.028488597, 0.023718705, 0.01917993, 9.4200994e-11]"
+14,1,43,0,1,"
+ 
+ Oh no, my eyes may be closed but I know what", those,6.458636562456377e-06,['I' 'is' 'they' 'the' 'it' 'Constructed'],"[1, 2, 3, 4, 5, 50158]","[0.21780199, 0.18371102, 0.06548033, 0.024700435, 0.01801245, 2.1289648e-12]"
+15,2,32,0,2, there once was a princess who was to be killed in the morning by the, king,3.6681526580650825e-06,['king' 'evil' 'prince' 'sun' 'monster' 'profits'],"[0, 1, 2, 3, 5, 50146]","[0.119537115, 0.0666927, 0.054187596, 0.037380796, 0.023694016, 7.4039655e-12]"

@@ -1,0 +1,147 @@
+For each of the following assignments, rank on a scale of 1-5 how possible each word is, given the provided context. 
+Some words are stems, if the word could be completed then you can still rank it highly. And be generous with acronyms that could be plausible. It helps to repeat the last few words of the prompt in your head while deciding how replaceable the current one is.5 means the word would work very well here, 1 means it doesnt make any sense, 3 means it could potentially work.===================================================== 
+ 
+Prompt 0. 
+The 15 words in front: 
+ 
+ about your Master, Jamie, Mickeymouse?'' Lewis asked. he chose _______
+1. not 2. to 3. the 4. abase 5. his 6. a 7.  his 
+ 
+=====================================================
+ 
+Prompt 1. 
+The 15 words in front: 
+ 
+ wronged him all the while overpaying for all the best things the world _______
+1. have 2.  has 3. redo 4. has 5. could 6. had 7. can 
+ 
+=====================================================
+ 
+Prompt 2. 
+The 15 words in front: 
+ 
+ 
+ 
+ I was not always this way, just a few months _______
+1. earlier 2. before 3. after 4. ago 5. NEWS 6. back 7.  ago 
+ 
+=====================================================
+ 
+Prompt 3. 
+The 15 words in front: 
+ 
+
+ 
+ 
+ Oh no, my eyes may be closed but I _______
+1.  know 2. still 3. Occupations 4. can 5. have 6. feel 7. am 
+ 
+=====================================================
+ 
+Prompt 4. 
+The 15 words in front: 
+ 
+ all over Rome, and i get to fish it out of the bottom of _______
+1. some 2. advertisement 3. an 4. the 5. a 6. my 7.  the 
+ 
+=====================================================
+ 
+Prompt 5. 
+The 15 words in front: 
+ 
+. 
+ 
+ It was half past midnight, so the fields outside _______
+1. our 2. the 3. had 4. of 5.  our 6. were 7. Adds 
+ 
+=====================================================
+ 
+Prompt 6. 
+The 15 words in front: 
+ 
+ and respect 
+ that what is done to Earth 
+ is done to _______
+1.  all 2. you 3. hawks 4. Dirt 5. everyone 6. all 7. Earth 
+ 
+=====================================================
+ 
+Prompt 7. 
+The 15 words in front: 
+ 
+ I am very cautious about talk of a single faith. We tried that on _______
+1. oiler 2. the 3.  Earth 4. Mars 5. a 6. our 7. Earth 
+ 
+=====================================================
+ 
+Prompt 8. 
+The 15 words in front: 
+ 
+ table I was sitting at, setting up a whole platter of it just _______
+1. a 2. avid 3. for 4. so 5.  for 6. to 7. in 
+ 
+=====================================================
+ 
+Prompt 9. 
+The 15 words in front: 
+ 
+, Bjørn Bjørnson, was actually Norwegian. Though I _______
+1. Products 2. think 3. have 4.  suppose 5. can 6. could 7. do 
+ 
+=====================================================
+ 
+Prompt 10. 
+The 15 words in front: 
+ 
+antes. 
+ 
+ 
+ The fact of the matter is that _______
+1. the 2. it 3. in 4. this 5. ILA 6.  people 7. there 
+ 
+=====================================================
+ 
+Prompt 11. 
+The 15 words in front: 
+ 
+ slowly around in a circle with it's arms stretched out, while the lower _______
+1. one 2. half 3. body 4.  half 5. rue 6. part 7. torso 
+ 
+=====================================================
+ 
+Prompt 12. 
+The 15 words in front: 
+ 
+. I see him dropping empty bottles. 
+ 
+ My dad opened _______
+1. the 2. his 3.  up 4. up 5. yip 6. a 7. this 
+ 
+=====================================================
+ 
+Prompt 13. 
+The 15 words in front: 
+ 
+ do what was necessary and bring the commander back dead or alive. That their _______
+1. leader 2. commanders 3. mission 4. Sport 5. actions 6.  emotions 7. commander 
+ 
+=====================================================
+ 
+Prompt 14. 
+The 15 words in front: 
+ 
+
+ 
+ Oh no, my eyes may be closed but I know what _______
+1. Constructed 2. it 3.  those 4. is 5. I 6. the 7. they 
+ 
+=====================================================
+ 
+Prompt 15. 
+The 15 words in front: 
+ 
+ there once was a princess who was to be killed in the morning by the _______
+1. king 2. evil 3. profits 4.  king 5. sun 6. prince 7. monster 
+ 
+=====================================================
+ 
