@@ -1,0 +1,35 @@
+,prompt_ind,time_point,batch_ind,ind_in_batch,leading_words,ground_word,ground_word_prob,words,abs_inds,probs
+0,85,59,3,15, short glass from the nightstand alongside James's bed. James poured slowly but, Charles,2.0199675418552943e-05,['steadily' 'then' 'poured' 'tried' 'kept' 'held'],"[0, 5, 10, 42, 15, 30]",[0.10372717 0.02085523 0.01228744 0.00357661 0.01042557 0.00542129]
+1,34,47,1,11," shoes. They were nice shoes, a little dirty, but still a wearable", pair,0.17913475632667542,['pair' 'item' 'shoe' 'good' 'look' 'fashion'],"[0, 2, 5, 12, 7, 15]",[0.17913476 0.07442557 0.02411442 0.00993254 0.02176797 0.00743699]
+2,40,132,1,17,", smashing a white plastic mask and the face behind it. A third figure", joined,0.006150468252599239,['emerged' 'was' 'moved' 'climbed' 'approached' 'floated'],"[0, 4, 8, 45, 12, 24]",[0.2035434  0.02371438 0.01463069 0.00356245 0.00939475 0.00586896]
+3,24,115,1,1," never cover it. He considered, took in his past and decided himself a", good,0.027579067274928093,['man' 'step' 'lifetime' 'call' 'half' 'light'],"[0, 13, 27, 332, 40, 81]",[0.05573973 0.00720579 0.00459934 0.00047751 0.00282857 0.00153218]
+4,83,78,3,13,"race. 
+ 
+ ``Time to show off, ''he grinned", and,0.14070147275924683,['as' 'at' 'in' 'to' 'from' 'a'],"[0, 2, 4, 3, 6, 12]",[0.4007027  0.14070147 0.03973731 0.11272091 0.01167742 0.00300338]
+5,78,78,3,8," the day it would've been easy! Not so today, it took me", two,0.05844415724277496,['a' 'hours' 'five' 'six' 'some' '24'],"[0, 7, 15, 14, 22, 45]",[0.16936234 0.02567895 0.01533528 0.01554464 0.00912496 0.00255243]
+6,23,132,1,0," like to feel her warmth in person. 
+ 
+ His best friends", always,0.029037535190582275,['were' 'and' 'was' 'did' 'in' 'life'],"[0, 2, 5, 58, 7, 15]",[0.2050555  0.03209    0.01616019 0.0022301  0.0135012  0.00766306]
+7,64,11,2,18,"back in the day ''. Before John's eighteenth birthday, when he had", received,0.0024621165357530117,['been' 'no' 'turned' 'left' 'lived' 'seen'],"[0, 7, 14, 27, 21, 42]",[0.12943263 0.02312811 0.01263704 0.00648846 0.00828762 0.00325544]
+8,67,9,2,21, of the human race are you not? And I believe it is the language, known,0.00109648029319942,['of' 'you' 'we' 'that' 'spoken' 'for'],"[0, 1, 3, 2, 4, 9]",[0.51000386 0.16448319 0.051479   0.08973123 0.02961543 0.00748215]
+9,32,54,1,9," than a few seconds, with a grunt of approval from the other party to", end,0.0016022849595174193,['my' 'the' 'each' 'his' 'which' 'be'],"[0, 1, 3, 5, 4, 9]",[0.37410486 0.1755186  0.02846112 0.01930818 0.02339543 0.01125007]
+10,24,32,1,1,"scape. He pushed back the low, thin limbs of the southern oak and", the,0.01701940782368183,['looked' 'saw' 'had' 'removed' 'headed' 'snapped'],"[0, 37, 75, 103, 112, 225]",[0.02934939 0.00580498 0.00246857 0.00173229 0.0015577  0.0007649 ]
+11,26,85,1,3," at the buffet delivered to the table I was sitting at, setting up a", whole,0.0054514845833182335,['table' 'meal' 'mess' 'video' 'battle' 'private'],"[0, 17, 35, 227, 52, 105]",[0.03326915 0.00790212 0.00412119 0.00066134 0.00250299 0.00138059]
+12,22,92,0,22,"ones have promised to combat the threat, but are still divided over who is", the,0.10267956554889679,['to' 'in' 'most' 'more' 'actually' 'qualified'],"[0, 3, 7, 6, 10, 21]",[0.3068631  0.05132615 0.03858295 0.03938571 0.01910395 0.00311931]
+13,84,71,3,14," out like a drum 
+ hair like a nest 
+ rats have wandered", through,0.034577254205942154,['in' 'through' 'around' 'off' 'out' 'away'],"[0, 2, 4, 3, 6, 12]",[0.302741   0.12086674 0.01853007 0.03457725 0.015697   0.01237713]
+14,50,95,2,4,". It followed behind him closely, its prismatic hues shining from within", its,0.2113676369190216,['the' 'a' 'his' 'as' 'like' 'John'],"[0, 2, 5, 3, 7, 15]",[0.292927   0.21136764 0.01812567 0.05230688 0.00923045 0.00272553]
+15,84,65,3,14,"
+ pal skin stretched 
+ out like a drum 
+ hair like a", nest,0.00024162190675269812,['flower' 'stick' 'hedge' 'leather' 'pearl' 'stone'],"[0, 57, 114, 367, 171, 342]",[0.01678319 0.00263605 0.00156819 0.00057067 0.00114546 0.00061246]
+16,20,97,0,20," 
+ Tom waited. 
+ 
+ ``Plus, we dragons are", magical,0.0011530055198818445,['pretty' 'big' 'born' 'scared' 'hard' 'great'],"[0, 11, 22, 88, 33, 66]",[0.08390506 0.01097001 0.00655563 0.00173645 0.00395893 0.00222466]
+17,6,52,0,6,. It was as if he were strapped in and forced to watch one billion, TV,0.011283732950687408,['hours' 'other' 'TV' 'sun' 're' 'thoughts'],"[0, 7, 15, 50, 22, 45]",[0.13064274 0.02047129 0.01129238 0.00181201 0.00488199 0.00197778]
+18,84,65,3,14,"
+ pal skin stretched 
+ out like a drum 
+ hair like a", nest,0.00024162190675269812,['flower' 'stick' 'hedge' 'leather' 'pearl' 'stone'],"[0, 57, 114, 367, 171, 342]",[0.01678319 0.00263605 0.00156819 0.00057067 0.00114546 0.00061246]

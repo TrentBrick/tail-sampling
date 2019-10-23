@@ -53,6 +53,11 @@ def get_specific_positions_from_probs(real_word_probs, prob_slices_wanted, rand_
             nearest_val, p_nearest_ind = find_nearest(real_word_probs_clone, p)
             #print(p_nearest_ind)
             
+            
+            7
+[' Charles' 'steadily' 'then' 'poured' 'tried' 'kept' 'held']
+[0.10374737 0.02087543 0.01230764 0.00359681 0.01044577 0.00544149]
+            
         #print(p_nearest_ind)
         
         if p_nearest_ind+rand_range > len(real_word_probs):

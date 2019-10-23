@@ -1,0 +1,170 @@
+For each of the following assignments, rank on a scale of 1-5 how possible each word is, given the provided context. 
+Some words are stems, if the word could be completed then you can still rank it highly. And be generous with acronyms that could be plausible. It helps to repeat the last few words of the prompt in your head while deciding how replaceable the current one is.5 means the word would work very well here, 1 means it doesnt make any sense, 3 means it could potentially work.===================================================== 
+ 
+Prompt 0. 
+The 15 words in front: 
+**** 
+ short glass from the nightstand alongside James's bed. James poured slowly but _______
+1. tried 2. held 3. steadily 4. kept 5. then 6. poured 7.  Charles 
+ 
+=====================================================
+ 
+Prompt 1. 
+The 15 words in front: 
+ 
+ shoes. They were nice shoes, a little dirty, but still a wearable _______
+1. good 2. look 3. fashion 4. item 5. pair 6.  pair 7. shoe 
+ 
+=====================================================
+ 
+Prompt 2. 
+The 15 words in front: 
+ 
+, smashing a white plastic mask and the face behind it. A third figure _______
+1. floated 2. emerged 3. was 4. moved 5. approached 6.  joined 7. climbed 
+ 
+=====================================================
+ 
+Prompt 3. 
+The 15 words in front: 
+ 
+ never cover it. He considered, took in his past and decided himself a _______
+1.  good 2. half 3. call 4. man 5. light 6. lifetime 7. step 
+ 
+=====================================================
+ 
+Prompt 4. 
+The 15 words in front: 
+ 
+race. 
+ 
+ ``Time to show off, ''he grinned _______
+1. at 2. from 3. as 4. in 5. a 6. to 7.  and 
+ 
+=====================================================
+ 
+Prompt 5. 
+The 15 words in front: 
+ 
+ the day it would've been easy! Not so today, it took me _______
+1.  two 2. hours 3. five 4. six 5. 24 6. some 7. a 
+ 
+=====================================================
+ 
+Prompt 6. 
+The 15 words in front: 
+ ************
+ like to feel her warmth in person. 
+ 
+ His best friends _______
+1. in 2.  always 3. and 4. life 5. were 6. was 7. did 
+ 
+=====================================================
+ 
+Prompt 7. 
+The 15 words in front: 
+ 
+back in the day. Before John's eighteenth birthday, when he had _______
+1. been 2. seen 3. left 4. turned 5. lived 6. no 7.  received 
+ 
+=====================================================
+ 
+Prompt 8. 
+The 15 words in front: 
+ 
+ of the human race are you not? And I believe it is the language _______
+1. we 2. you 3. spoken 4. of 5. for 6.  known 7. that 
+ 
+=====================================================
+ 
+Prompt 9. 
+The 15 words in front: 
+ 
+ than a few seconds, with a grunt of approval from the other party to _______
+1. each 2. be 3. the 4. his 5.  end 6. my 7. which 
+ 
+=====================================================
+ 
+Prompt 10. 
+The 15 words in front: 
+ 
+scape. He pushed back the low, thin limbs of the southern oak and _______
+1. saw 2. had 3. removed 4. headed 5. looked 6.  the 7. snapped 
+ 
+=====================================================
+ 
+Prompt 11. 
+The 15 words in front: 
+ ***********
+ at the buffet delivered to the table I was sitting at, setting up a _______
+1. battle 2. meal 3. mess 4. table 5. video 6.  whole 7. private 
+ 
+=====================================================
+ 
+Prompt 12. 
+The 15 words in front: 
+ 
+ones have promised to combat the threat, but are still divided over who is _______
+1.  the 2. to 3. actually 4. qualified 5. most 6. in 7. more 
+ 
+=====================================================
+ 
+Prompt 13. 
+The 15 words in front: 
+ 
+ out like a drum 
+ hair like a nest 
+ rats have wandered _______
+1. through 2. in 3. away 4. out 5.  through 6. off 7. around 
+ 
+=====================================================
+ 
+Prompt 14. 
+The 15 words in front: 
+ 
+. It followed behind him closely, its prismatic hues shining from within _______
+1. the 2.  its 3. as 4. John 5. a 6. his 7. like 
+ 
+=====================================================
+ 
+Prompt 15. 
+The 15 words in front: 
+ *********
+
+ pal skin stretched 
+ out like a drum 
+ hair like a _______
+1. pearl 2. hedge 3.  nest 4. flower 5. stone 6. leather 7. stick 
+ 
+=====================================================
+ 
+Prompt 16. 
+The 15 words in front: 
+ 
+ 
+ Tom waited. 
+ 
+ ``Plus, we dragons are _______
+1. hard 2. born 3. pretty 4.  magical 5. scared 6. great 7. big 
+ 
+=====================================================
+ 
+Prompt 17. 
+The 15 words in front: 
+ ********************
+. It was as if he were strapped in and forced to watch one billion _______
+1.  TV 2. re 3. hours 4. sun 5. TV 6. thoughts 7. other 
+ 
+=====================================================
+ 
+Prompt 18. 
+The 15 words in front: 
+ 
+
+ pal skin stretched 
+ out like a drum 
+ hair like a _______
+1. pearl 2. flower 3. leather 4. hedge 5.  nest 6. stick 7. stone 
+ 
+=====================================================
+ 
